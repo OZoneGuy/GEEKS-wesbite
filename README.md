@@ -1,5 +1,7 @@
 # McMaster GEEKS Website
 
+The McMaster Geeks official website,
+
 ---
 ## First Stage Objectives
  - [ ] A main CSS file for all pages
