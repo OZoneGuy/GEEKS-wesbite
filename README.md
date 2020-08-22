@@ -40,15 +40,17 @@ The McMaster Geeks official website,
 
  For a more general instruction read [this article](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04).
  
- 1. Install the required pakages.
- 2. Run `gunicorn --access-logfile - --workers n --bind unix:/path/to/socket/file.sock /path/to/myproject.wsgi:application`. Where `n` is the maximum number of worker sub-threads working.
+ 1. Install the required packages.
+ 2. Install the required python packages using the `requirements.txt`
+ 3. Run `$ python manage.py shell -c 'from django.core.management import utils; print(utils.get_random_secret_key())'`
+ 4. Run `gunicorn --access-logfile - --workers n --bind unix:/path/to/socket/file.sock /path/to/myproject.wsgi:application`. Where `n` is the maximum number of worker sub-threads working.`
  
      You can create a systemd service using this command. See the linked article for more details.
      
- 3. Edit the `nginx-config/sites/defailt.cfg`  to point to the correct files/directories.
- 4. Delete the contents of `/etc/nginx/` directory.
- 5. Copy the contents of `nginx-config` into `/etc/nginx/`
- 6. Start nginx.
+ 5. Edit the `nginx-config/sites/defailt.cfg`  to point to the correct files/directories.
+ 6. Delete the contents of `/etc/nginx/` directory.
+ 7. Copy the contents of `nginx-config` into `/etc/nginx/`
+ 8. Start nginx.
 
 ---
 
