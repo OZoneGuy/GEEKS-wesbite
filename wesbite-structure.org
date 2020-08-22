@@ -1,0 +1,23 @@
+Here is described the website structure/map
+#+BEGIN_SRC plantuml :file uml-diags/website-structure.png :exports results
+  @startmindmap
+  ,*[#green] Main page
+  ,**[#green] Events page
+  ,***[#green] Event page(individual)
+  ,**[#yellow] Community pages...
+  ,**[#yellow] Sponsors page
+  ,**[#green] Newsletters page
+  ,***[#green] Newsletter page(individual)
+  ,**[#green] Exec login page(could be general login page.)
+  ,**[#green] Exec Control page
+  ,***[#green] Exec forms
+
+  legend right
+          Green: Dynamic/Django page
+          Yellow: Static page
+  endlegend
+  @endmindmap
+#+END_SRC
+
+#+RESULTS:
+[[file:uml-diags/website-structure.png]]
