@@ -73,6 +73,8 @@ WSGI_APPLICATION = 'geeks_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# Only for development. Change to postgres for production.
+# See here: https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04#create-a-gunicorn-systemd-service-file
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
