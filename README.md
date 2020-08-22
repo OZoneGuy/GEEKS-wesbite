@@ -28,4 +28,16 @@ The McMaster Geeks official website,
 
 ---
 
+## Required Packages
+
+ - nginx
+ - python(3)-pip
+ - python(3)-dev
+ - libpq-dev
+ - postgresql
+ - postgresql-contrib
+ - Plus see 'requirements.txt' for python packages
+
+---
+
 More to be added!
