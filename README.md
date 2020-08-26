@@ -34,9 +34,13 @@ The McMaster Geeks official website,
  - libpq-dev
  - postgresql
  - postgresql-contrib
+ - docker
+ - docker-compose
  - Plus see 'requirements.txt' for python packages
 
 ## Install instructions
+
+Deprecated instructions. New setup requires docker and docker-compose.
 
  For a more general instruction read [this article](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04).
  
