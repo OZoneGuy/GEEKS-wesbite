@@ -8,10 +8,13 @@ services:
       - "443:443"
     volumes:
       - ./nginx-config/:/etc/nginx/
+      - ./media:/usr/web-media/
+      - ./static:/usr/web-static/
   django:
     build: django
     volumes:
       - ./django/:/django/
+      - ./media:/usr/web-media/
   db:
     image: postgres
     restart: always
