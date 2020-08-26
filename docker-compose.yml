@@ -1,0 +1,21 @@
+version "3.8"
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx-config/:/etc/nginx/
+  django:
+    build: django
+    volumes:
+      - ./django/:/django/
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRESS_PASSWORD: changeme123
+    volumes:
+      - ./postgress-data:/var/lib/postgresql/data/
