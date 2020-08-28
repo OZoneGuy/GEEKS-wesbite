@@ -21,4 +21,4 @@ services:
     environment:
       POSTGRESS_PASSWORD: changeme123
     volumes:
-      - ./postgress-data:/var/lib/postgresql/data/
+      - ./postgres-data:/var/lib/postgresql/data/
