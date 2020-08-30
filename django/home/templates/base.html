@@ -1,0 +1,38 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <title>{% block title %}McMaster Geeks{% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=decive, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen"/>
+        <script src="{% static 'js/base.js' %}"></script>
+        <script src="https://kit.fontawesome.com/423722d4ae.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="header-div">
+            <div>
+                <img id="img-logo" src="{% static 'img/logo.png' %}" alt="McMaster Geeks">
+                <i id="img-menu" class="fas fa-bars" onclick="toggleActive('menu')"></i>
+            </div>
+            <ul class="nav-ul" id="menu">
+                <!-- Need to add an 'a' element inside the li -->
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="{% url 'events:index' %}">Events</a></li>
+                <li class="nav-item dropdown"><a onclick="toggleActive('com-menu');">Communities</a>
+                    <div class="dropdown-menu" id="com-menu">
+                        <ul class="nav-ul">
+                            <li class="nav-item"><a href="dnd">DnD</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="{% url 'blogs:index' %}">News</a></li>
+                <li class="nav-item"><a href="/sponsors">Sponsors</a></li>
+            </ul>
+        </div>
+
+        {% block body %}
+        {% endblock %}
+    </body>
+
+</html>
