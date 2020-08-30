@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    font-family: Roboto;
+    font-weight: 400;
+
+    font-size: 1.1em;
+}
+
+h1 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 4em;
+    text-align: center;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    color: white;
+}
+
+#header-div {
+    background: gray;
+    padding: 0 2em 0;
+
+    margin: 0;
+
+    box-sizing: border-box;
+}
+
+#header-div > div {
+    position: relative;
+    padding: 1em 0;
+}
+
+#img-logo {
+    display: block;
+    margin: 0em auto;
+    height: 5vh;
+}
+
+#img-menu {
+    display: none;
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-ul {
+    text-align: center;
+    padding-left: 0;
+    margin: auto;
+}
+
+.nav-item a{
+    display: inline-block;
+
+    padding: 1em 1em;
+
+    font-family: Roboto;
+    font-weight: 400;
+
+    font-size: 1.1em;
+
+    text-transform: uppercase;
+
+    transition: background-color 0.2s, box-shadow 0.3s;
+}
+
+.nav-item {
+    display: inline-block;
+}
+
+.nav-item:hover {
+    box-shadow: 0px 0px 4px #00000040;
+    z-index: 1;
+    transition: background-color 0.2s, box-shadow 0.4s;
+
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+.dropdown-menu a {
+    box-shadow: 0;
+    display: block;
+
+    font-size: 0.9em;
+
+    text-transform: capitalize;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+@media only screen and (max-width: 786px) {
+    #img-menu {
+        display: initial;
+        z-index: 10;
+    }
+
+    #img-menu:hover {
+        cursor: pointer;
+    }
+
+    .nav-ul {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        background-color: white;
+        height: 100vh;
+        width: 70vw;
+
+        padding: auto auto;
+
+        z-index: 1;
+    }
+
+    .nav-ul.active {
+        display: block;
+    }
+
+    .nav-ul .nav-item {
+        display: block;
+    }
+
+    .dropdown-menu.active {
+        display: block;
+        position: static;
+        box-shadow: initial;
+    }
+
+    .dropdown-menu.active .nav-ul {
+        display: block;
+        position: static;
+        height: initial;
+    }
+
+    .nav-item:hover {
+        box-shadow: initial;
+    }
+}
