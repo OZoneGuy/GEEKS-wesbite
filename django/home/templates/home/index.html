@@ -56,7 +56,7 @@
 <div class="blogs">
     <h3>News and Updates</h3>
     {% for blog in blogs %}
-    <a href="{% url 'blogs:index' blog.id %}">
+    <a href="{% url 'blogs:details' blog.id %}">
         <div>
             <h4>{{ blog.title }}</h4>
             <p>{{ blog.body | truncatechars:100 }}</p>
