@@ -1,3 +1,5 @@
 **/__pycache__
 **/admin
 **/migrations
+**/postgres-data
+**/ssl
