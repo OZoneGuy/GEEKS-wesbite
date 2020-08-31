@@ -9,7 +9,7 @@
 <a href="{% url 'events:details' event.id %}">
     <div>
         <h3>{{ blog.title }}</h3>
-        <h5>{{ blog.body | truncatechar:100 }}</h5>
+        <h5>{{ blog.body | truncatechars:100 }}</h5>
     </div>
 </a>
 
