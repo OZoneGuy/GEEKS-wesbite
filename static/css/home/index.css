@@ -8,13 +8,9 @@
 /*     height: 100%; */
 /* } */
 
-/* #eventsCarousel img { */
-/* /\*     position: absolute; *\/ */
-/*     height: 80% !important; */
-/*     border-style: solid; */
-/*     /\* border-color: black; *\/ */
-/*     /\* border-width: 2px; *\/ */
-/* } */
+#eventsCarousel img {
+    height: 80% !important;
+}
 
 div.blogs {
     padding: 1em 10vw;
