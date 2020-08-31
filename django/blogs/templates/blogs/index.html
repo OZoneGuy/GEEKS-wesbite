@@ -4,6 +4,19 @@
 
 {% block body %}
 
-<h1>News</h1>
+{% for blog in blogs %}
+
+<a href="{% url 'events:details' event.id %}">
+    <div>
+        <h3>{{ blog.title }}</h3>
+        <h5>{{ blog.body | truncatechar:100 }}</h5>
+    </div>
+</a>
+
+{% empty %}
+
+<h3>No Events planned.</h3>
+
+{% endfor %}
 
 {% endblock %}
