@@ -26,7 +26,7 @@
     <div class="carousel-inner">
         {% for event in events %}
         <div class="carousel-item active">
-            <a href="{% url 'event:index' event.id"><img class="d-block" src="{{ MEDIA_URL }}{{ event.banner }}" alt="{{ event.title }}"></a>
+            <a href="{% url 'event:details' event.id"><img class="d-block" src="{{ MEDIA_URL }}{{ event.banner }}" alt="{{ event.title }}"></a>
             <div class="carousel-caption d-none d-md-block">
                 <h5>{{ event.title }}</h5>
                 <p>{{ event.short_desc }}</p>
