@@ -15,6 +15,7 @@ services:
     volumes:
       - ./django/:/django/
       - ./media:/usr/web-media/
+      - ./static:/usr/static/
   db:
     image: postgres
     restart: always
