@@ -10,8 +10,8 @@ def index(request):
     return render(request, "blogs/index.html", context=context)
 
 
-def details(request, id):
+def details(request, blog_id):
     context = {
-        'blog': Blog.objects.get(pk=id)
+        'blog': Blog.objects.get(pk=blog_id)
     }
     return render(request, "blogs/details.html", context=context)

@@ -10,8 +10,8 @@ def index(request):
     return render(request, "events/index.html", context=context)
 
 
-def details(request, id):
+def details(request, event_id):
     context = {
-        'event': Event.objects.get(pk=id)
+        'event': Event.objects.get(pk=event_id)
     }
     return render(request, "events/details.html", context=context)
