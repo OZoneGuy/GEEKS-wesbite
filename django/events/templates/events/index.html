@@ -4,6 +4,20 @@
 
 {% block body %}
 
-<h1>Events</h1>
+{% for event in events %}
+
+<a href="{% url 'events:details' event.id %}">
+    <div>
+        <h3>{{ event.title }}</h3>
+        <h5>{{ event.short_desc }}</h5>
+        <p>{{ events.start_time|date: "SHORT_DATETIME_FORMAT" }}</p>
+    </div>
+</a>
+
+{% empty %}
+
+<h3>No Events planned.</h3>
+
+{% endfor %}
 
 {% endblock %}
