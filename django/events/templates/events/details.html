@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block body %}
+
+<img src="{{ MEDIA_URL }} event.banner" alt="event_banner">
+
+<p>{{ event.start_time|date:"SHORT_DATETIME_FORMAT" }}</p>
+<h2>{{ event.desc }}</h2>
+
+{% endblock %}
