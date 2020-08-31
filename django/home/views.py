@@ -1,6 +1,14 @@
 from django.shortcuts import render
+from events.models import Event
+from blogs.models import Blog
+from datetime import datetime
 
 
 # Create your views here.
 def index(request):
-    return render(request, "base.html")
+    context = {
+        'events': Event.objects.filter(start_time__gt=datetime.now()),
+        'blogs': Blog.objects.all(),
+    }
+
+    return render(request, "home/index.html", context=context)
