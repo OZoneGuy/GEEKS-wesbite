@@ -5,19 +5,19 @@ The McMaster Geeks official website,
 ---
 ## First Stage Objectives
  - [ ] A main CSS file for all pages
- - [ ] Home page with basic information
-   - [ ] Should contain information about incoming events
- - [ ] A navigation menu
+ - [X] Home page with basic information
+   - [X] Should contain information about incoming events
+ - [X] A navigation menu
  - [ ] A template for community pages
 
  Should host basic information about the community, will not be changing frequently.
 
- - [ ] An events page with link to each event(?)
+ - [X] An events page with link to each event(?)
  - [ ] Links to our sponsors
 
  Maybe a brief bio for each, provided by each?
 
- - [ ] A newsletters page with links to each newsletter/article
+ - [X] A newsletters page with links to each newsletter/article
  - [ ] Ability to use markdown when posting.
  
 ## Second Stage
