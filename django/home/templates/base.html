@@ -19,26 +19,46 @@
         {% block head %}{% endblock %}
     </head>
     <body>
-        <div id="header-div">
-            <div>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-custom">
+            <a class="navbar-brand" href="#">
                 <img id="img-logo" src="{% static 'img/logo.png' %}" alt="McMaster Geeks">
-                <i id="img-menu" class="fas fa-bars" onclick="toggleActive('menu')"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home:index' %}">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'events:index' %}">Events</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Communities
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{% url 'home:dnd'">DnD</a>
+                            <a class="dropdown-item" href="{% url 'home:tabletop'">Tabletop</a>
+                            <a class="dropdown-item" href="{% url 'home:anime'">Anime</a>
+                            <a class="dropdown-item" href="{% url 'home:smash'">Smash</a>
+                            <a class="dropdown-item" href="{% url 'home:pokemon'">Pokemon</a>
+                            <a class="dropdown-item" href="{% url 'home:minecraft'">Minecraf</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blogs:index' %}">News</a>
+                    </li>
+                    {% comment '' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:sponsors' %}">Sponsors</a>
+                    </li>
+                    {% endcomment %}
+                </ul>
             </div>
-            <ul class="nav-ul" id="menu">
-                <!-- Need to add an 'a' element inside the li -->
-                <li class="nav-item"><a href="/">Home</a></li>
-                <li class="nav-item"><a href="{% url 'events:index' %}">Events</a></li>
-                <li class="nav-item dropdown"><a onclick="toggleActive('com-menu');">Communities</a>
-                    <div class="dropdown-menu" id="com-menu">
-                        <ul class="nav-ul">
-                            <li class="nav-item"><a href="dnd">WIP</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="{% url 'blogs:index' %}">News</a></li>
-                <li class="nav-item"><a href="/sponsors">Sponsors</a></li>
-            </ul>
-        </div>
+        </nav>
 
         {% block body %}
         {% endblock %}
