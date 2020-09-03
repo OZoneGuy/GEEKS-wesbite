@@ -1,6 +1,7 @@
 .event-item > div {
     width: 80vw;
     margin: 1em auto;
+    padding: 1em;
 
     transition: background-color 0.2s, box-shadow 0.1s;
 
