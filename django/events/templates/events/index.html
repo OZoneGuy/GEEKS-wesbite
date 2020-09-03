@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Events{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/events/index.css' %}" type="text/css" media="screen"/>
+{% endblock %}
 
 {% block body %}
 
 {% for event in events %}
 
-<a href="{% url 'events:details' event.id %}">
+<a href="{% url 'events:details' event.id %}" class="event-item">
     <div>
         <h3>{{ event.title }}</h3>
         <h5>{{ event.short_desc }}</h5>

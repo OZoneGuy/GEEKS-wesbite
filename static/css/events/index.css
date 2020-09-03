@@ -1,0 +1,17 @@
+.event-item > div {
+    width: 80vw;
+    margin: 1em auto;
+
+    transition: background-color 0.2s, box-shadow 0.1s;
+
+    color: black !important;
+}
+
+.event-item > div:hover {
+    box-shadow: 0px 0px 4px #00000040;
+    transition: background-color 0.2s, box-shadow 0.3s;
+}
+
+a:hover.event-item {
+    text-decoration: none;
+}
