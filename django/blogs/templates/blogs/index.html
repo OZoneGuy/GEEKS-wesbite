@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}News and Updates{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/blogs/index.css' %}" >
+{% endblock %}
 
 {% block body %}
 
 {% for blog in blogs %}
 
-<a href="{% url 'events:details' event.id %}">
+<a href="{% url 'events:details' event.id %}" class="blog">
     <div>
         <h3>{{ blog.title }}</h3>
         <h5>{{ blog.body | truncatechars:100 }}</h5>
+        <p>By: {{ blog.author }}</p>
+        <p>Pub Date: {{ blog.pub_date|date:"SHORT_DATE_FORMAT" }}</p>
     </div>
 </a>
 
