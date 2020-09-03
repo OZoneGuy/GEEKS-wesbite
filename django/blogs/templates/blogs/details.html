@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ blog.title }}{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{% url 'blogs/detals.css' %}" type="text/css" media="screen" />
+{% endblock %}
+
 {% block body %}
 
-<p>{{ blog.author }}</p>
-<p>{{ blog.pub_date }}</p>
-<p>{{ blog.body }}</p>
+<div class="blog">
+    <p>{{ blog.author }}</p>
+    <p>{{ blog.pub_date }}</p>
+    <p>{{ blog.body }}</p>
+</div>
 
 {% endblock %}
