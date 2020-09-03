@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Event
 
 
@@ -12,6 +12,6 @@ def index(request):
 
 def details(request, event_id):
     context = {
-        'event': Event.objects.get(pk=event_id)
+        'event': get_object_or_404(Event, pk=event_id)
     }
     return render(request, "events/details.html", context=context)
