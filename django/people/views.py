@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as l_in, logout as l_out, authenticate
 from django.contrib.auth.models import User as U
@@ -24,7 +25,7 @@ def login(request):
                 l_in(request, user)
                 return redirect('home:index')
             else:
-                return HttpResponse("Your account was inactive.")
+                return HttpResponse("Your account is inactive.")
         else:
             return HttpResponse("Invalid Username/Password.")
     if (request.method == 'GET'):
