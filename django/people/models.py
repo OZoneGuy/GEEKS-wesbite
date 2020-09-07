@@ -1,7 +1,7 @@
-from django.core.exceptions import ValidationError
-from django.db import models
 from django import forms
 from django.contrib.auth.models import User as U
+from django.core.exceptions import ValidationError
+from django.db import models
 
 
 # Create your models here.
