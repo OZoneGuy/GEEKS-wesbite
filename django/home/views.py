@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from events.models import Event
-from blogs.models import Blog
 from datetime import datetime
+
+from django.shortcuts import render
+
+from blogs.models import Blog
+from events.models import Event
 
 
 # Create your views here.
