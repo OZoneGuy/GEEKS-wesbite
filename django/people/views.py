@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as l_in, logout as l_out, authenticate
-from models import RegisterForm
+from django.contrib.auth.models import User as U
+from models import RegisterForm, User
 
 
 # Create your views here.
@@ -44,7 +45,17 @@ def register(request):
     if (request.method == 'POST'):
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.cleaned_data
+            user = User(user=U.objects.create_user(
+                username=data.get('username'),
+                first_name=data.get('f_name'),
+                last_name=data.get('l_name'),
+                email=data.get('email'),
+                password=data.get('password'),
+                is_staff=False,
+                is_superuser=False,
+                is_active=False,))
+            l_in(request, user.user)
             return redirect('people:register')
 
     else:
