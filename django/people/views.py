@@ -70,18 +70,21 @@ def register(request):
                 is_superuser=False,
                 is_active=True,)
 
+            user.save()
+
             is_member: bool
             mem_uuid: uuid
             if date.today() < date(year=2020, month=10, day=1):
                 is_member = True
                 mem_uuid = uuid.uuid4()
 
-                Account(user=user,
-                        is_member=is_member,
-                        member_code=mem_uuid)
+                account = Account(user=user,
+                                  is_member=is_member,
+                                  member_code=mem_uuid)
             else:
-                Account(user=user)
+                account = Account(user=user)
 
+            account.save()
             l_in(request, user)
             return redirect('people:register')
 
