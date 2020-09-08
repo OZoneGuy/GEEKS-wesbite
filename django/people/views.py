@@ -15,7 +15,7 @@ from .models import RegisterForm, Account, LoginForm
 def index(request):
     if (not request.user.is_authenticated):
         return redirect('people:login')
-    context = {'user': request.user}
+    context = {'member': request.user.account}
     return render(request, 'people/index.html', context=context)
 
 
