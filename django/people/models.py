@@ -12,15 +12,15 @@ class Account(models.Model):
                                 on_delete=models.CASCADE,
                                 primary_key=True)
     is_member = models.BooleanField(default=False)
-    member_code = models.UUIDField(editable=False)
-    pending_member = models.BooleanField(defailt=False)
+    member_code = models.UUIDField(editable=True)
+    pending_member = models.BooleanField(default=False)
 
     class AccountTypes(models.TextChoices):
         MARKETING = 'MRKT', _('Marketing')
         EXEC = 'EXC', _('Exec')
         REGULAR = 'REG', _('Member')
 
-    mem_type = models.CharField(max_length=2,
+    mem_type = models.CharField(max_length=4,
                                 choices=AccountTypes.choices,
                                 default=AccountTypes.REGULAR)
 
