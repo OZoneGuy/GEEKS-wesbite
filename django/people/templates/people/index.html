@@ -5,7 +5,7 @@
 
 {% block head %}
 
-{$ endblock %}
+{% endblock %}
 
 {% block body %}
 
@@ -23,4 +23,5 @@ Membership costs 10CAD. You will be contacted with instructions.
 {% endif %}
 
 <button href="{% url 'people:logout' %}">Logout</button>
-{$ endblock %}
+
+{% endblock %}
