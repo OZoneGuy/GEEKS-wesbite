@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ member.user.first_name }}'sProfile{% endblock %}
+
+{% block head %}
+
+{$ endblock %}
+
+{% block body %}
+
+<h3>{{ member.user.first_name }} {{ member.user.last_name }}</h3>
+
+<p>Email: {{ member.user.email }}</p>
+
+Account Type: {{ member.mem_type }}
+
+{% if member.is_member %}
+Membership Number: {{ member.membere_code }}
+{% else %}
+<button>Request Membership</button>
+Membership costs 10CAD. You will be contacted with instructions.
+{% endif %}
+{$ endblock %}
