@@ -5,10 +5,9 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as l_in
 from django.contrib.auth import logout as l_out
 from django.contrib.auth.models import User as U
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from .models import RegisterForm, Account, LoginForm
+from .models import Account, LoginForm, RegisterForm
 
 
 # Create your views here.
