@@ -8,7 +8,7 @@ from django.contrib.auth.models import User as U
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from models import RegisterForm, User
+from models import RegisterForm, Account
 
 
 # Create your views here.
@@ -59,7 +59,7 @@ def register(request):
                 is_member = True
                 mem_uuid = uuid.uuid4()
 
-                user = User(user=U.objects.create_user(
+                user = Account(user=U.objects.create_user(
                     username=data.get('username'),
                     first_name=data.get('f_name'),
                     last_name=data.get('l_name'),
@@ -71,7 +71,7 @@ def register(request):
                             is_member=is_member,
                             member_code=mem_uuid)
             else:
-                user = User(user=U.objects.create_user(
+                user = Account(user=U.objects.create_user(
                     username=data.get('username'),
                     first_name=data.get('f_name'),
                     last_name=data.get('l_name'),

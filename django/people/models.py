@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.
-class User(models.Model):
+class Account(models.Model):
     user = models.OneToOneField(U,
                                 on_delete=models.CASCADE,
                                 primary_key=True)
