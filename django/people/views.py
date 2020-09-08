@@ -8,7 +8,7 @@ from django.contrib.auth.models import User as U
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from models import RegisterForm, Account, LoginForm
+from .models import RegisterForm, Account, LoginForm
 
 
 # Create your views here.
@@ -41,7 +41,8 @@ def login(request):
                 form.add_error('password', "Wrong Username or Password")
     else:
         form = LoginForm()
-    return render(request, 'misc/forms.html', {'form': form})
+    return render(request, 'misc/forms.html', {'form': form,
+                                               'target': 'people:login'})
 
 
 def logout(request):
@@ -87,4 +88,5 @@ def register(request):
     else:
         form = RegisterForm()
 
-    return render(request, 'misc/forms.html', {'form': form})
+    return render(request, 'misc/forms.html', {'form': form,
+                                               'target': 'people:register'})
