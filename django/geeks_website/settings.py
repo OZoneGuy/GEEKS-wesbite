@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['django']
 # Application definition
 
 INSTALLED_APPS = [
+    'misc.apps.MiscConfig',
+    'people.apps.PeopleConfig',
     'home.apps.HomeConfig',
     'events.apps.EventsConfig',
     'blogs.apps.BlogsConfig',
