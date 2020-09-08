@@ -21,10 +21,10 @@ def index(request):
 
 def login(request):
     if (request.user.is_authenticated):
-        return redirect('people:index')
+        return redirect('people:account')
     if (request.method == 'POST'):
         form = LoginForm(request.POST)
-        if (form.is_valid):
+        if (form.is_valid()):
             data = form.cleaned_data
             username = data.get('username')
             password = data.get('password')
@@ -32,7 +32,7 @@ def login(request):
             if user:
                 if user.is_active:
                     l_in(request, user)
-                    return redirect('home:index')
+                    return redirect('people:account')
                 else:
                     form.add_error('username',
                                    "Account is inactive."
@@ -53,7 +53,7 @@ def logout(request):
 def register(request):
 
     if (request.user.is_authenticated):
-        return redirect('people:index')
+        return redirect('people:account')
 
     if (request.method == 'POST'):
         form = RegisterForm(request.POST)
