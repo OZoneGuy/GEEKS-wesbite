@@ -44,7 +44,7 @@ class Account(models.Model):
 
     class Meta:
         permissions = (
-            ('can_make_member', 'Can give membership status')
+            ('make_member', 'Can give membership status'),
         )
 
 
