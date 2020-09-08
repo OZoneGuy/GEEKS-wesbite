@@ -8,7 +8,7 @@ from django.contrib.auth.models import User as U
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from models import RegisterForm, Account
+from models import RegisterForm, Account, LoginForm
 
 
 # Create your views here.
@@ -23,19 +23,25 @@ def login(request):
     if (request.user.is_authenticated):
         return redirect('people:index')
     if (request.method == 'POST'):
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        if user:
-            if user.is_active:
-                l_in(request, user)
-                return redirect('home:index')
+        form = LoginForm(request.POST)
+        if (form.is_valid):
+            data = form.cleaned_data
+            username = data.get('username')
+            password = data.get('password')
+            user = authenticate(username=username, password=password)
+            if user:
+                if user.is_active:
+                    l_in(request, user)
+                    return redirect('home:index')
+                else:
+                    form.add_error('username',
+                                   "Account is inactive."
+                                   " Contact Admin for activation.")
             else:
-                return HttpResponse("Your account is inactive.")
-        else:
-            return HttpResponse("Invalid Username/Password.")
-    if (request.method == 'GET'):
-        return render(request, 'people/login.html')
+                form.add_error('password', "Wrong Username or Password")
+    else:
+        form = LoginForm()
+    return render(request, 'misc/forms.html', {'form': form})
 
 
 def logout(request):
@@ -53,38 +59,32 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
+            user = U.objects.create_user(
+                username=data.get('username'),
+                first_name=data.get('f_name'),
+                last_name=data.get('l_name'),
+                email=data.get('email'),
+                password=data.get('password'),
+                is_staff=False,
+                is_superuser=False,
+                is_active=True,)
+
             is_member: bool
             mem_uuid: uuid
             if date.today() < date(year=2020, month=10, day=1):
                 is_member = True
                 mem_uuid = uuid.uuid4()
 
-                user = Account(user=U.objects.create_user(
-                    username=data.get('username'),
-                    first_name=data.get('f_name'),
-                    last_name=data.get('l_name'),
-                    email=data.get('email'),
-                    password=data.get('password'),
-                    is_staff=False,
-                    is_superuser=False,
-                    is_active=False,),
-                            is_member=is_member,
-                            member_code=mem_uuid)
+                Account(user=user,
+                        is_member=is_member,
+                        member_code=mem_uuid)
             else:
-                user = Account(user=U.objects.create_user(
-                    username=data.get('username'),
-                    first_name=data.get('f_name'),
-                    last_name=data.get('l_name'),
-                    email=data.get('email'),
-                    password=data.get('password'),
-                    is_staff=False,
-                    is_superuser=False,
-                    is_active=False))
+                Account(user=user)
 
-            l_in(request, user.user)
+            l_in(request, user)
             return redirect('people:register')
 
     else:
         form = RegisterForm()
 
-    return render(request, 'people/register.html', {'form': form})
+    return render(request, 'misc/forms.html', {'form': form})
