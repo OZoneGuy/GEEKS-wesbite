@@ -53,14 +53,14 @@ class RegisterForm(forms.Form):
                                label="Username")
     f_name = forms.CharField(max_length=50,
                              label="First Name")
-    l_name = forms.charField(max_length=50,
+    l_name = forms.CharField(max_length=50,
                              label="Last Name")
     email = forms.EmailField(label="McMaster Email")
     password = forms.CharField(min_length=8,
-                               widget=forms.PasswordWidget,
+                               widget=forms.PasswordInput,
                                label="Password")
     rep_password = forms.CharField(min_length=8,
-                                   widget=forms.PasswordWidget,
+                                   widget=forms.PasswordInput,
                                    label="Repeat Password")
 
     def clean_email(self):
@@ -71,7 +71,7 @@ class RegisterForm(forms.Form):
         return self.cleaned_data['email']
 
     def clean(self):
-        cleaned_data = super.clean()
+        cleaned_data = super().clean()
         password = cleaned_data.get('password')
         rep_password = cleaned_data.get('rep_password')
 
@@ -84,5 +84,5 @@ class LoginForm(forms.Form):
     username = forms.CharField(max_length=50,
                                label="Username")
     password = forms.CharField(min_length=8,
-                               widget=forms.PasswordWidget,
+                               widget=forms.PasswordInput,
                                label="Password")
