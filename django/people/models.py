@@ -1,7 +1,9 @@
+import uuid
 from django import forms
 from django.contrib.auth.models import User as U
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.
@@ -9,6 +11,41 @@ class User(models.Model):
     user = models.OneToOneField(U,
                                 on_delete=models.CASCADE,
                                 primary_key=True)
+    is_member = models.BooleanField(default=False)
+    member_code = models.UUIDField(editable=False)
+    pending_member = models.BooleanField(defailt=False)
+
+    class AccountTypes(models.TextChoices):
+        MARKETING = 'MRKT', _('Marketing')
+        EXEC = 'EXC', _('Exec')
+        REGULAR = 'REG', _('Member')
+
+    mem_type = models.CharField(max_length=2,
+                                choices=AccountTypes.choices,
+                                default=AccountTypes.REGULAR)
+
+    @property
+    def apply_for_membership(self):
+        if (self.is_member):
+            return
+        self.pending_member = True
+        self.save()
+        return
+
+    @property
+    def make_member(self):
+        if(self.is_member):
+            return
+        self.pending_member = False
+        self.is_member = True
+        self.member_code = uuid.uuid4()
+        self.save()
+        return
+
+    class Meta:
+        permissions = (
+            ('can_make_member', 'Can give membership status')
+        )
 
 
 class RegisterForm(forms.Form):
