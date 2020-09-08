@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
+{% block title %}Login{% endblock %}
+
+{% block body %}
 # In form_snippet.html:
-{% for field in form %}
 <div class="fieldWrapper">
-    {{ field.errors }}
-    {{ field.label_tag }} {{ field }}
+    <form action="{% url target %}" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% endfor %}
+        <input type="submit" value="Login">
+    </form>
 </div>
-{% endfor %}
+{% endblock %}
