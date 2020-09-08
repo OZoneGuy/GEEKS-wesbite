@@ -21,4 +21,6 @@ Membership Number: {{ member.membere_code }}
 <button>Request Membership</button>
 Membership costs 10CAD. You will be contacted with instructions.
 {% endif %}
+
+<button href="{% url 'people:logout' %}">Logout</button>
 {$ endblock %}
