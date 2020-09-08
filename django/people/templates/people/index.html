@@ -14,14 +14,16 @@
 <p>Email: {{ member.user.email }}</p>
 
 Account Type: {{ member.mem_type }}
-
+<br>
 {% if member.is_member %}
-Membership Number: {{ member.membere_code }}
+Membership Number: {{ member.member_code }}
 {% else %}
 <button>Request Membership</button>
+<br>
 Membership costs 10CAD. You will be contacted with instructions.
 {% endif %}
 
+<br>
 <button href="{% url 'people:logout' %}">Logout</button>
 
 {% endblock %}
