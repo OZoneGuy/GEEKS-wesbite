@@ -14,3 +14,11 @@ def index(request):
     }
 
     return render(request, "home/index.html", context=context)
+
+
+def about_us(request):
+    return render(request, "home/about_us.html")
+
+
+def weeklies(request):
+    return render(request, "home/weeklies.html")
