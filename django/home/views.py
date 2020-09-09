@@ -9,7 +9,8 @@ from events.models import Event
 # Create your views here.
 def index(request):
     context = {
-        'events': Event.objects.filter(start_time__gt=datetime.now()),
+        'events': Event.objects.filter(start_time__gt=datetime.now()
+                                       ).order_by('start_time')[:5],
         'blogs': Blog.objects.all(),
     }
 
