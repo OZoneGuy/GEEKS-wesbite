@@ -41,12 +41,14 @@
                             Communities
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{% url 'home:dnd'">DnD</a>
-                            <a class="dropdown-item" href="{% url 'home:tabletop'">Tabletop</a>
-                            <a class="dropdown-item" href="{% url 'home:anime'">Anime</a>
-                            <a class="dropdown-item" href="{% url 'home:smash'">Smash</a>
-                            <a class="dropdown-item" href="{% url 'home:pokemon'">Pokemon</a>
-                            <a class="dropdown-item" href="{% url 'home:minecraft'">Minecraf</a>
+                            {% comment '' %}
+                            <a class="dropdown-item" href="{% url 'home:dnd' %}">DnD</a>
+                            <a class="dropdown-item" href="{% url 'home:tabletop' %}">Tabletop</a>
+                            <a class="dropdown-item" href="{% url 'home:anime' %}">Anime</a>
+                            <a class="dropdown-item" href="{% url 'home:smash' %}">Smash</a>
+                            <a class="dropdown-item" href="{% url 'home:pokemon' %}">Pokemon</a>
+                            <a class="dropdown-item" href="{% url 'home:minecraft' %}">Minecraf</a>
+                            {% endcomment %}
                         </div>
                     </li>
                     <li class="nav-item">
