@@ -30,7 +30,7 @@ def new(request):
                         author=request.user.first_name + " "
                         "" + request.user.last_name)
             blog.save()
-            return redirect('blogs:details', id=blog.id)
+            return redirect('blogs:details', blog_id=blog.id)
     else:
         form = NewBlogForm()
     return render(request, 'misc/forms.html', {'form': form,
@@ -52,7 +52,7 @@ def edit(request, blog_id):
             blog.body = data.get('body')
 
             blog.save()
-            return redirect('blogs:details', id=blog.id)
+            return redirect('blogs:details', blog_id=blog.id)
     else:
         data = {
             'title': blog.title,

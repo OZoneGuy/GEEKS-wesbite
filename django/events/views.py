@@ -32,7 +32,7 @@ def new(request):
                           end_time=data.get('end_time'),
                           banner=data.get('banner'))
             event.save()
-            return redirect('events:details', id=event.id)
+            return redirect('events:details', event_id=event.id)
     else:
         form = NewEventForm()
     return render(request, 'misc/forms.html', {'form': form,
@@ -58,7 +58,7 @@ def edit(request, event_id):
             event.banner = data.get('banner')
 
             event.save()
-            return redirect('events:details', id=event.id)
+            return redirect('events:details', event_id=event.id)
     else:
         data = {
             'title': event.title,
