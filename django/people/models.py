@@ -82,7 +82,7 @@ class RegisterForm(forms.Form):
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=50,
-                               label="Username")
+                               label='Username')
     password = forms.CharField(min_length=8,
                                widget=forms.PasswordInput,
-                               label="Password")
+                               label='Password')
