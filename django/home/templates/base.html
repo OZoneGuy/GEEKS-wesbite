@@ -65,6 +65,16 @@
                         <a class="nav-link" href="{% url 'home:sponsors' %}">Sponsors</a>
                     </li>
                     {% endcomment %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'people:account' %}">Account</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'people:login' %}">Login</a>
+                    </li>
+                    {% endif %}
+
                 </ul>
             </div>
         </nav>
