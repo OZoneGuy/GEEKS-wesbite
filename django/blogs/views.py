@@ -1,6 +1,6 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
-from .models import Blog
+from .models import Blog, NewBlogForm, EditBlogForm
 
 
 # Create your views here.
@@ -16,3 +16,47 @@ def details(request, blog_id):
         'blog': get_object_or_404(Blog, pk=blog_id)
     }
     return render(request, "blogs/details.html", context=context)
+
+
+def new(request):
+    if (request.method == 'POST'):
+        form = NewBlogForm(request.POST)
+        if (form.is_valid()):
+            data = form.cleaned_data
+            blog = Blog(title=data.get('title'),
+                        body=data.get('body'),
+                        author=request.user.first_name + " "
+                        "" + request.user.last_name)
+            blog.save()
+            return redirect('blogs:details', id=blog.id)
+    else:
+        form = NewBlogForm()
+    return render(request, 'misc/forms.html', {'form': form,
+                                               'target': 'blogs:new',
+                                               'title': 'New Blog'})
+    pass
+
+
+def edit(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+    if (request.method == 'POST'):
+        form = EditBlogForm(request.POST)
+        if (form.is_valid()):
+            data = form.cleaned_data
+
+            blog.title = data.get('title')
+            blog.body = data.get('body')
+
+            blog.save()
+            return redirect('blogs:details', id=blog.id)
+    else:
+        data = {
+            'title': blog.title,
+            'body': blog.body,
+        }
+        form = NewBlogForm(initial=data)
+    return render(request, 'misc/forms.html', {'form': form,
+                                               'target': 'blogs:edit',
+                                               'argument': blog_id,
+                                               'title': 'Edit Blog'})
+    pass
