@@ -37,6 +37,7 @@ def new(request):
         form = NewEventForm()
     return render(request, 'misc/forms.html', {'form': form,
                                                'target': 'events:new',
+                                               'submit': 'Create Event',
                                                'title': 'New Event'})
     pass
 
@@ -71,5 +72,6 @@ def edit(request, event_id):
     return render(request, 'misc/forms.html', {'form': form,
                                                'target': 'events'
                                                ':edit ' + event_id,
+                                               'submit': 'Update Event',
                                                'title': 'New Event'})
     pass

@@ -35,6 +35,7 @@ def new(request):
         form = NewBlogForm()
     return render(request, 'misc/forms.html', {'form': form,
                                                'target': 'blogs:new',
+                                               'submit': 'Create Blog',
                                                'title': 'New Blog'})
     pass
 
@@ -61,5 +62,6 @@ def edit(request, blog_id):
     return render(request, 'misc/forms.html', {'form': form,
                                                'target': 'blogs:edit',
                                                'argument': blog_id,
+                                               'submit': 'Update Blog',
                                                'title': 'Edit Blog'})
     pass

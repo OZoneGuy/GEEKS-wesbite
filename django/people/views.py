@@ -42,6 +42,7 @@ def login(request):
         form = LoginForm()
     return render(request, 'misc/forms.html', {'form': form,
                                                'target': 'people:login',
+                                               'submit': 'Login',
                                                'title': 'Login'})
 
 
@@ -93,4 +94,5 @@ def register(request):
 
     return render(request, 'misc/forms.html', {'form': form,
                                                'target': 'people:register',
+                                               'submit': 'Register',
                                                'title': 'Register'})
