@@ -9,6 +9,10 @@
 
 {% block body %}
 
+{% if perms.blogs.add_blog %}
+<a href="{% url 'blogs:new' %}">Add Blog</a>
+{% endif %}
+
 {% for blog in blogs %}
 
 <a href="{% url 'events:details' event.id %}" class="blog">

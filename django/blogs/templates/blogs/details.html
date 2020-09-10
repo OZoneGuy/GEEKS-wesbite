@@ -9,6 +9,10 @@
 
 {% block body %}
 
+{% if perms.blogs.change_blog %}
+<a href="{% url 'blogs:edit' blog.id %}">Edit Blog</a>
+{% endif %}
+
 <div class="blog">
     <p>{{ blog.author }}</p>
     <p>{{ blog.pub_date }}</p>

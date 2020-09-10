@@ -3,7 +3,11 @@
 
 {% block body %}
 
-<img src="{{ MEDIA_URL }} event.banner" alt="event_banner">
+<img src="{{ MEDIA_URL }} {{ event.banner.url }}" alt="event_banner">
+
+{% if perms.events.change_event %}
+<a href="{% url 'events:edit' event.id %}">Edit Event</a>
+{% endif %}
 
 <p>{{ event.start_time|date:"SHORT_DATETIME_FORMAT" }}</p>
 <h2>{{ event.desc }}</h2>

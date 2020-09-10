@@ -9,6 +9,10 @@
 
 {% block body %}
 
+{% if perms.events.add_event %}
+<a href="{% url 'events:new' %}">Add Event</a>
+{% endif %}
+
 {% for event in events %}
 
 <a href="{% url 'events:details' event.id %}" class="event-item">
