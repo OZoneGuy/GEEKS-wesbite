@@ -19,7 +19,7 @@ def details(request, event_id):
     return render(request, "events/details.html", context=context)
 
 
-@permission_required('events.add_blog')
+@permission_required('events.add_blog', raise_exception=True)
 def new(request):
     if (request.method == 'POST'):
         form = NewEventForm(request.POST)
@@ -42,7 +42,7 @@ def new(request):
     pass
 
 
-@permission_required('events.change_blog')
+@permission_required('events.change_blog', raise_exception=True)
 def edit(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     if (request.method == 'POST'):
