@@ -7,7 +7,7 @@ from .models import Event, NewEventForm, EditEventForm
 # Create your views here.
 def index(request):
     context = {
-        'event': Event.objects.all()
+        'events': Event.objects.all()
     }
     return render(request, "events/index.html", context=context)
 
@@ -19,10 +19,10 @@ def details(request, event_id):
     return render(request, "events/details.html", context=context)
 
 
-@permission_required('events.add_blog', raise_exception=True)
+@permission_required('events.add_event', raise_exception=True)
 def new(request):
     if (request.method == 'POST'):
-        form = NewEventForm(request.POST)
+        form = NewEventForm(request.POST, request.FILES)
         if (form.is_valid()):
             data = form.cleaned_data
             event = Event(title=data.get('title'),
@@ -42,11 +42,11 @@ def new(request):
     pass
 
 
-@permission_required('events.change_blog', raise_exception=True)
+@permission_required('events.change_event', raise_exception=True)
 def edit(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     if (request.method == 'POST'):
-        form = EditEventForm(request.POST, request.FILE)
+        form = EditEventForm(request.POST, request.FILES)
         if (form.is_valid()):
             data = form.cleaned_data
 
@@ -70,8 +70,8 @@ def edit(request, event_id):
         }
         form = NewEventForm(initial=data)
     return render(request, 'misc/forms.html', {'form': form,
-                                               'target': 'events'
-                                               ':edit ' + event_id,
+                                               'target': 'events:edit',
+                                               'argument': event_id,
                                                'submit': 'Update Event',
-                                               'title': 'New Event'})
+                                               'title': 'Edit Event'})
     pass

@@ -39,7 +39,7 @@ class NewEventForm(forms.Form):
             self.add_error('end_time',
                            ValidationError("End time is before start time."))
 
-        if start_time < datetime.now():
+        if start_time.replace(tzinfo=None) < datetime.now():
             self.add_error('start_time',
                            ValidationError(
                                "Start time must be in the future."))

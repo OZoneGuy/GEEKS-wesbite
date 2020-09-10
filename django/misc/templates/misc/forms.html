@@ -5,9 +5,9 @@
 {% block body %}
 <div class="fieldWrapper" >
     {% if argument %}
-    <form action="{% url target argument %}" method="post">
+    <form action="{% url target argument %}" method="post" enctype="multipart/form-data">
     {% else %}
-    <form action="{% url target %}" method="post">
+    <form action="{% url target %}" method="post" enctype="multipart/form-data">
     {% endif %}
         {% csrf_token %}
         <table style="width:80vw">
