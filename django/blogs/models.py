@@ -7,21 +7,20 @@ from django import forms
 class Blog(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
-    pub_date = models.DateField(auto_now_add=True)
-    last_edit_date = models.DateField(auto_now=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    last_edit_date = models.DateTimeField(auto_now=True)
     author = models.CharField(max_length=50)
-    last_editor = models.CharField(max_length=50)
 
 
 class NewBlogForm(forms.Form):
     title = forms.CharField(max_length=100,
                             label="Title")
-    body = forms.CharField(widget=forms.TextArea,
+    body = forms.CharField(widget=forms.Textarea,
                            label="Body")
 
 
 class EditBlogForm(forms.Form):
     title = forms.CharField(max_length=100,
                             label="Title", initial='title')
-    body = forms.CharField(widget=forms.TextArea,
+    body = forms.CharField(widget=forms.Textarea,
                            label="Body", initial='body')
