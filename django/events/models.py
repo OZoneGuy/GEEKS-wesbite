@@ -35,6 +35,8 @@ class NewEventForm(forms.Form):
         start_time = cleaned_data.get('start_time')
         end_time = cleaned_data.get('end_time')
 
+        if start_time is None or end_time is None:
+            return
         if start_time > end_time:
             self.add_error('end_time',
                            ValidationError("End time is before start time."))
@@ -66,7 +68,10 @@ class EditEventForm(forms.Form):
     end_time = forms.DateTimeField(label='Event end time',
                                    initial='end_time')
     banner = forms.ImageField(label='Event banner',
-                              initial='banner')
+                              initial='banner',
+                              required=False,
+                              help_text='Please download the file then'
+                              're upload if you do not wish to change it.')
 
     def clean(self):
         cleaned_data = super().clean()
@@ -77,7 +82,7 @@ class EditEventForm(forms.Form):
             self.add_error('end_time',
                            ValidationError("End time is before start time."))
 
-        if start_time < datetime.now():
+        if start_time.replace(tzinfo=None) < datetime.now():
             self.add_error('start_time',
                            ValidationError(
                                "Start time must be in the future."))

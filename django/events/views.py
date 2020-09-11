@@ -66,9 +66,11 @@ def edit(request, event_id):
             'long_desc': event.long_desc,
             'start_time': event.start_time,
             'end_time': event.end_time,
+        }
+        file_data = {
             'banner': event.banner,
         }
-        form = NewEventForm(initial=data)
+        form = NewEventForm(data, file_data)
     return render(request, 'misc/forms.html', {'form': form,
                                                'target': 'events:edit',
                                                'argument': event_id,
