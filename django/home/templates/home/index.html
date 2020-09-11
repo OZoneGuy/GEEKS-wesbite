@@ -12,15 +12,15 @@
 <div id="eventsCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         {% for i in events %}
-        <li data-target="#eventsCarousel" data-slide-to="{{ forloop.counter0 }}" {% if i == 0 %} class="active" {% endif %}></li>
+        <li data-target="#eventsCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter0 == 0 %} class="active" {% endif %}></li>
         {% empty %}
         <li data-target="#eventsCarousel" data-slide-to="0" class="active" ></li>
         {% endfor %}
     </ol>
     <div class="carousel-inner">
         {% for event in events %}
-        <div class="carousel-item active">
-            <a href="{% url 'event:details' event.id"><img class="d-block" src="{{ MEDIA_URL }}{{ event.banner }}" alt="{{ event.title }}"></a>
+        <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+            <a href="{% url 'events:details' event.id %}"><img class="d-block w-100" src="{{ event.banner.url }}" alt="{{ event.title }}"></a>
             <div class="carousel-caption d-none d-md-block">
                 <h5>{{ event.title }}</h5>
                 <p>{{ event.short_desc }}</p>
