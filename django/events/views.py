@@ -46,7 +46,7 @@ def new(request):
 def edit(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     if (request.method == 'POST'):
-        form = EditEventForm(request.POST, request.FILES)
+        form = EditEventForm(request.POST)
         if (form.is_valid()):
             data = form.cleaned_data
 
@@ -55,7 +55,6 @@ def edit(request, event_id):
             event.longs_desc = data.get('longs_desc')
             event.start_time = data.get('start_time')
             event.end_time = data.get('end_time')
-            event.banner = data.get('banner')
 
             event.save()
             return redirect('events:details', event_id=event.id)
@@ -67,10 +66,7 @@ def edit(request, event_id):
             'start_time': event.start_time,
             'end_time': event.end_time,
         }
-        file_data = {
-            'banner': event.banner,
-        }
-        form = NewEventForm(data, file_data)
+        form = NewEventForm(data)
     return render(request, 'misc/forms.html', {'form': form,
                                                'target': 'events:edit',
                                                'argument': event_id,
