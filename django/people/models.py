@@ -47,6 +47,9 @@ class Account(models.Model):
             ('make_member', 'Can give membership status'),
         )
 
+    def __str__(self):
+        return self.user.first_name + " " + self.user.last_name
+
 
 class RegisterForm(forms.Form):
     username = forms.CharField(max_length=50,
