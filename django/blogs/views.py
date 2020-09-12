@@ -1,7 +1,12 @@
-from django.shortcuts import get_object_or_404, render, redirect
+import markdown as md
+from django import template
 from django.contrib.auth.decorators import permission_required
+from django.shortcuts import get_object_or_404, redirect, render
+from django.template.defaultfilters import stringfilter
 
-from .models import Blog, NewBlogForm, EditBlogForm
+from .models import Blog, EditBlogForm, NewBlogForm
+
+register = template.Library()
 
 
 # Create your views here.
@@ -65,3 +70,9 @@ def edit(request, blog_id):
                                                'submit': 'Update Blog',
                                                'title': 'Edit Blog'})
     pass
+
+
+@register.filter
+@stringfilter
+def markdown(value):
+    return md.markdown(value, extensions=['markdown.extensions.fenced_code'])
