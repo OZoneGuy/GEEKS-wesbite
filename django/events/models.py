@@ -67,6 +67,11 @@ class EditEventForm(forms.Form):
                                      initial='start_time')
     end_time = forms.DateTimeField(label='Event end time',
                                    initial='end_time')
+    banner = forms.ImageField(label='Event banner',
+                              initial='banner',
+                              required=False,
+                              help_text='Please download the file then'
+                              're upload if you do not wish to change it.')
 
     def clean(self):
         cleaned_data = super().clean()
