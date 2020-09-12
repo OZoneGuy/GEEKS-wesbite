@@ -71,6 +71,8 @@ class RegisterForm(forms.Form):
         if (domain.lower() != "mcmaster.ca"):
             raise ValidationError(
                 "Invalid email. Please use your McMaster email.")
+        if U.objects.filter(email=self.cleaned_data['email']).exists():
+            raise ValidationError("Email exists")
         return self.cleaned_data['email']
 
     def clean(self):
