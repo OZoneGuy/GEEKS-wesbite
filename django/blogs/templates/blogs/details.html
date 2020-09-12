@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_templates %}
 
 {% block title %}{{ blog.title }}{% endblock %}
 
@@ -16,7 +17,7 @@
 <div class="blog">
     <p>{{ blog.author }}</p>
     <p>{{ blog.pub_date }}</p>
-    <p>{{ blog.body }}</p>
+    {{ blog.body|markdown }}
 </div>
 
 {% endblock %}
