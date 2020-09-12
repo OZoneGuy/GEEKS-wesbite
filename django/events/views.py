@@ -66,7 +66,7 @@ def edit(request, event_id):
             'start_time': event.start_time,
             'end_time': event.end_time,
         }
-        form = NewEventForm(data)
+        form = EditEventForm(data)
     return render(request, 'misc/forms.html', {'form': form,
                                                'target': 'events:edit',
                                                'argument': event_id,
