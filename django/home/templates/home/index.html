@@ -9,7 +9,7 @@
 
 {% block body %}
 <!-- events slide show -->
-<div id="eventsCarousel" class="carousel slide" data-ride="carousel">
+<div id="eventsCarousel" class="carousel slide w-75 mx-auto" data-ride="carousel">
     <ol class="carousel-indicators">
         {% for i in events %}
         <li data-target="#eventsCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter0 == 0 %} class="active" {% endif %}></li>
