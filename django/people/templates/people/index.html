@@ -4,7 +4,7 @@
 {% block title %}{{ member.user.first_name }}'sProfile{% endblock %}
 
 {% block head %}
-
+<script src="https://cdn.jsdelivr.net/npm/davidshimjs-qrcodejs@0.0.2/qrcode.min.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -16,7 +16,8 @@
 Account Type: {{ member.mem_type }}
 <br>
 {% if member.is_member %}
-Membership Number: {{ member.member_code }}
+Membership Number:
+<div id="memQR"></div>
 {% else %}
 <button>Request Membership(WIP)</button>
 <br>
@@ -26,4 +27,11 @@ Membership costs 10CAD. You will be contacted with instructions.
 <br>
 <a href="{% url 'people:logout' %}">Logout</a>
 
+<script type="text/javascript">
+ var qrcode = new QRCode(document.getElementById("memQR"), {
+     text: "{{ member.member_code }}",
+     width: 100,
+     height: 100
+ })
+</script>
 {% endblock %}
