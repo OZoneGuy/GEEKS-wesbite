@@ -16,7 +16,7 @@
 Account Type: {{ member.mem_type }}
 <br>
 {% if member.is_member %}
-Membership Number:
+Membership Number: {{ member.member_code }}
 <div id="memQR"></div>
 {% else %}
 <button>Request Membership(WIP)</button>
