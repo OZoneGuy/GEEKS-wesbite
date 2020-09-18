@@ -12,7 +12,9 @@ class Account(models.Model):
                                 on_delete=models.CASCADE,
                                 primary_key=True)
     is_member = models.BooleanField(default=False)
-    member_code = models.UUIDField(editable=True)
+    member_code = models.UUIDField(editable=True,
+                                   blank=True,
+                                   null=True)
     pending_member = models.BooleanField(default=False)
 
     class AccountTypes(models.TextChoices):
