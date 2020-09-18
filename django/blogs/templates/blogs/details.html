@@ -17,7 +17,7 @@
 <div class="blog">
     <p>{{ blog.author }}</p>
     <p>{{ blog.pub_date }}</p>
-    {{ blog.body|markdown }}
+    {{ blog.body|markdown|safe }}
 </div>
 
 {% endblock %}
