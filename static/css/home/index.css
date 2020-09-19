@@ -15,3 +15,12 @@
 div.blogs {
     padding: 1em 10vw;
 }
+
+img#weekly {
+    margin: 5vh auto;
+
+    max-width: 90vw;
+    max-height:70vh;
+
+    display: block;
+}
