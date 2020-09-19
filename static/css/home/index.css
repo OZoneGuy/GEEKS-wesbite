@@ -1,13 +1,3 @@
-/* #eventsCarousel { */
-/*     height: 60vh; */
-/*     width: 80vw; */
-/*     margin: 1em auto; */
-/* } */
-
-/* #eventsCarousel div { */
-/*     height: 100%; */
-/* } */
-
 #eventsCarousel img {
     height: 80% !important;
 }
