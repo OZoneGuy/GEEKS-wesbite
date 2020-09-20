@@ -7,6 +7,8 @@
 
 <img src="{{ event.banner.url }}" alt="event_banner">
 
+<br>
+
 <h2>{{ event.title }}</h2>
 {% if perms.events.change_event %}
 <a href="{% url 'events:edit' event.id %}">Edit Event</a>
