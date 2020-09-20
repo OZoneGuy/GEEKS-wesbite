@@ -16,11 +16,27 @@ class NewBlogForm(forms.Form):
     title = forms.CharField(max_length=100,
                             label="Title")
     body = forms.CharField(widget=forms.Textarea,
-                           label="Body")
+                           label="Body",
+                           help_text="You can use [Markdown]"
+                           """(https://www.markdownguide.org/basic-syntax).
+
+Examples:
+
+- `*text*` → *text*
+- `**text**` → **text**
+- `***text***` → ***text***""")
 
 
 class EditBlogForm(forms.Form):
     title = forms.CharField(max_length=100,
                             label="Title", initial='title')
     body = forms.CharField(widget=forms.Textarea,
-                           label="Body", initial='body')
+                           label="Body", initial='body',
+                           help_text="You can use [Markdown]"
+                           """(https://www.markdownguide.org/basic-syntax).
+
+Examples:
+
+- `*text*` → *text*
+- `**text**` → **text**
+- `***text***` → ***text***""")

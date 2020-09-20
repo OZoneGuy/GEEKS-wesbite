@@ -24,7 +24,16 @@ class NewEventForm(forms.Form):
     long_desc = forms.CharField(max_length=500,
                                 widget=forms.Textarea,
                                 help_text='This should contain all the'
-                                ' events details, plus description.',
+                                ' events details, plus description.  '
+                                ""
+                                "You can use [Markdown]"
+                                """(https://www.markdownguide.org/basic-syntax).
+
+Examples:
+
+- `*text*` → *text*
+- `**text**` → **text**
+- `***text***` → ***text***""",
                                 label='Long Description')
     start_time = forms.DateTimeField(label='Event start time')
     end_time = forms.DateTimeField(label='Event end time')
@@ -60,7 +69,16 @@ class EditEventForm(forms.Form):
     long_desc = forms.CharField(max_length=500,
                                 widget=forms.Textarea,
                                 help_text='This should contain all the'
-                                ' events details, plus description.',
+                                ' events details, plus description.  '
+                                ""
+                                "You can use [Markdown]"
+                                """(https://www.markdownguide.org/basic-syntax).
+
+Examples:
+
+- `*text*` → *text*
+- `**text**` → **text**
+- `***text***` → ***text***""",
                                 label='Long Description',
                                 initial='long_desc')
     start_time = forms.DateTimeField(label='Event start time',
