@@ -1,5 +1,11 @@
-#eventsCarousel img {
-    height: 80% !important;
+#eventsCarousel img{
+    /* height: 80% !important; */
+    min-width: 50vw;
+    max-height: 80vh !important;
+    max-width: 80vh !important;
+    margin: auto !important;
+
+    object-fit: contain;
 }
 
 div.blogs {
