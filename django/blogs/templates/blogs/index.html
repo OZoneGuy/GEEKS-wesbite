@@ -15,7 +15,7 @@
 
 {% for blog in blogs %}
 
-<a href="{% url 'events:details' event.id %}" class="blog">
+<a href="{% url 'blogs:details' blog.id %}" class="blog">
     <div>
         <h3>{{ blog.title }}</h3>
         <h5>{{ blog.body | truncatechars:100 }}</h5>
@@ -26,7 +26,7 @@
 
 {% empty %}
 
-<h3>No Events planned.</h3>
+<h3>No blogs so far.</h3>
 
 {% endfor %}
 

@@ -7,7 +7,7 @@ from .models import Blog, EditBlogForm, NewBlogForm
 # Create your views here.
 def index(request):
     context = {
-        'blog': Blog.objects.all()
+        'blogs': Blog.objects.all()
     }
     return render(request, "blogs/index.html", context=context)
 
