@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load custom_tags %}
+
 {% block title %}{{ event.title }}{% endblock %}
 
 {% block body %}
@@ -11,6 +13,6 @@
 {% endif %}
 
 <p>{{ event.start_time|date:"SHORT_DATETIME_FORMAT" }}</p>
-<p>{{ event.long_desc }}</p>
+<p>{{ event.long_desc|markdown|safe }}</p>
 
 {% endblock %}
