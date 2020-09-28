@@ -2,10 +2,8 @@
     /* height: 80% !important; */
     min-width: 50vw;
     max-height: 80vh !important;
-    max-width: 80vh !important;
+    max-width: 80vw !important;
     margin: auto !important;
-
-    object-fit: contain;
 }
 
 div.carousel-caption {
