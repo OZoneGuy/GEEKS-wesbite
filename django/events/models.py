@@ -35,8 +35,12 @@ Examples:
 - `**text**` → **text**
 - `***text***` → ***text***""",
                                 label='Long Description')
-    start_time = forms.DateTimeField(label='Event start time')
-    end_time = forms.DateTimeField(label='Event end time')
+    start_time = forms.DateTimeField(label='Event start time',
+                                     help_text='Format: YYYY-MM-DD HH:mm.'
+                                     ' 24-hr format.')
+    end_time = forms.DateTimeField(label='Event end time',
+                                   help_text='Format: YYYY-MM-DD HH:mm.'
+                                   ' 24-hr format.')
     banner = forms.FileField(label='Event banner')
 
     def clean(self):
@@ -87,9 +91,7 @@ Examples:
                                    initial='end_time')
     banner = forms.ImageField(label='Event banner',
                               initial='banner',
-                              required=False,
-                              help_text='Please download the file then'
-                              're upload if you do not wish to change it.')
+                              required=False,)
 
     def clean(self):
         cleaned_data = super().clean()
