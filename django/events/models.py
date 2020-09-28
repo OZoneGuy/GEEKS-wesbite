@@ -21,7 +21,7 @@ class NewEventForm(forms.Form):
                                  help_text='A short description of the event.'
                                  ' No details needed here.',
                                  label='Short Description')
-    long_desc = forms.CharField(max_length=500,
+    long_desc = forms.CharField(max_length=2000,
                                 widget=forms.Textarea,
                                 help_text='This should contain all the'
                                 ' events details, plus description.  '
@@ -64,7 +64,7 @@ class EditEventForm(forms.Form):
     title = forms.CharField(max_length=100,
                             label='Event Title',
                             initial='title')
-    short_desc = forms.CharField(max_length=500,
+    short_desc = forms.CharField(max_length=2000,
                                  widget=forms.Textarea,
                                  help_text='A short description of the event.'
                                  ' No details needed here.',
