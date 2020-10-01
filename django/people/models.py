@@ -29,20 +29,20 @@ class Account(models.Model):
     @property
     def apply_for_membership(self):
         if (self.is_member):
-            return
+            return False
         self.pending_member = True
         self.save()
-        return
+        return True
 
     @property
     def make_member(self):
         if(self.is_member):
-            return
+            return False
         self.pending_member = False
         self.is_member = True
         self.member_code = uuid.uuid4()
         self.save()
-        return
+        return True
 
     class Meta:
         permissions = (
