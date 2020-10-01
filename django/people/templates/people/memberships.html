@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ member.user.first_name }}'sProfile{% endblock %}
+
+
+{% block body %}
+{% if members %}
+<table>
+{% for member in members %}
+    <tr>
+        <td>{{ member.user.username }}</td>
+        <td>{{ member.user.email }}</td>
+        <td>
+            <form action="{% url 'people:membership' %}" method="GET">
+                <!-- <input name="member" value="{{ member.id }}" > -->
+                <input type="submit" name="member" value="{{ member.pk }}">
+            </form>
+        </td>
+    </tr>
+{% endfor%}
+</table>
+{% else %}
+
+<h3>No membership requests!</h3>
+
+{% endif %}
+{% endblock body %}

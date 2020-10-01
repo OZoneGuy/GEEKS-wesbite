@@ -4,8 +4,10 @@ from datetime import date
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as l_in
 from django.contrib.auth import logout as l_out
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import User as U
-from django.shortcuts import redirect, render
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import Account, LoginForm, RegisterForm
 
@@ -96,3 +98,18 @@ def register(request):
                                                'target': 'people:register',
                                                'submit': 'Register',
                                                'title': 'Register'})
+
+
+@permission_required('people.make_member', raise_exception=True)
+def memberships(request):
+    if ('member' in request.GET):
+        acc = get_object_or_404(Account, pk=request.GET['member'])
+        if (acc.make_member):
+            return HttpResponse('Given membership successfully.')
+        else:
+            return HttpResponse('Failed to give membership.'
+                                ' Please contact admin.')
+    else:
+        context = {'members':
+                   Account.objects.filter(pending_member__exact=True)}
+        return render(request, 'people/memberships.html', context=context)

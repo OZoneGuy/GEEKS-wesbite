@@ -24,6 +24,10 @@ Membership Number: {{ member.member_code }}
 Membership costs 10CAD. You will be contacted with instructions.
 {% endif %}
 
+{% if perms.people.make_member %}
+<a href="{% url 'people:membership' %}">See memberships</a>
+{% endif %}
+
 <br>
 <a href="{% url 'people:logout' %}">Logout</a>
 
