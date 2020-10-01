@@ -13,7 +13,14 @@
 
 <p>Email: {{ member.user.email }}</p>
 
-Account Type: {{ member.mem_type }}
+
+
+{% if user.is_staff %}
+Account groups: {% for group in user.groups.all %} {{ group.name }} {% endfor %}
+<br>
+<a href="/admin/">Admin page</a>
+{% endif %}
+
 <br>
 {% if member.is_member %}
 Membership Number: {{ member.member_code }}
