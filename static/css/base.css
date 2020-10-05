@@ -23,3 +23,62 @@ h1, h2, h3, h4, h5 {
     height: 5vh;
 }
 
+ul.nav {
+    margin: 0;
+    padding: 0;
+
+    background: black;
+    overflow: hidden;
+
+    list-style-type: none;
+}
+
+li.nav-item {
+    float: left;
+}
+
+.nav-item a {
+    font-family: Montserrat;
+    font-weight: 400;
+
+    padding: 1em 1em;
+    display: inline-block;
+    text-align: center;
+
+    color: white;
+    text-decoration: none;
+}
+
+.nav-item a:hover {
+    background: gray;
+}
+
+.dropdown-menu {
+    display: none;
+
+    background: white;
+    position: absolute;
+    min-width: 200px;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    color: black;
+
+    padding: 1em 0.7em;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-menu a:hover {
+    background: gray;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
