@@ -1,9 +1,11 @@
 import uuid
 from datetime import date
 
-from django.contrib.auth import authenticate
+from django.contrib import messages
+from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib.auth import login as l_in
 from django.contrib.auth import logout as l_out
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import User as U
 from django.http import HttpResponse
@@ -129,3 +131,27 @@ def members(request):
         context = {"members": Account.objects.filter(is_member=True)}
         pass
     return render(request, 'people/members.html', context=context)
+
+
+def change_pass(request):
+    if (not request.user.is_authenticated):
+        return redirect('people:login')
+
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request,
+                             'Your password was successfully updated!')
+            return redirect('change_password')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'misc/forms.html', {
+        'form': form,
+        'target': "people:password",
+        'submit': "Change Password",
+        'title': "Change Password"
+    })
