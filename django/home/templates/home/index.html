@@ -11,31 +11,18 @@
 
 {% if events %}
 <!-- events slide show -->
-<div id="eventsCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        {% for i in events %}
-        <li data-target="#eventsCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter0 == 0 %} class="active" {% endif %}></li>
-        {% endfor %}
-    </ol>
-    <div class="carousel-inner">
-        {% for event in events %}
-        <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
-            <a href="{% url 'events:details' event.id %}"><img class="d-block" src="{{ event.banner.url }}" alt="{{ event.title }}"></a>
-            <div class="carousel-caption d-none d-md-block">
-                <h5>{{ event.title }}</h5>
-                <p>{{ event.short_desc }}</p>
-            </div>
-        </div>
-        {% endfor %}
-     </div>
-    <a class="carousel-control-prev" href="#eventsCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#eventsCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+<div class="slideshow-container">
+    {% for event in events %}
+
+    <div class="mySlides fade">
+        <div class="numbertext">{{ forloop.countr }}/{{ events|length }}</div>
+        <img src="{{ event.banner.url }}">
+        <div class="text"><h2>{{ event.title }}</h2></div>
+    </div>
+
+    {% endfor %}
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 {% else %}
 <div>
@@ -57,4 +44,6 @@
     <h4>No updates</h4>
 </div>
 {% endfor %}
+
+<script src="{% static 'js/slide.js' %}"></script>
 {% endblock %}
