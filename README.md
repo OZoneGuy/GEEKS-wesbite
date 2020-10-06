@@ -58,9 +58,11 @@ The McMaster Geeks official website,
       
 6. Run `docker exec -ti geeks-website_django_1 python manage.py makemigrations`
 7. Run `docker exec -ti geeks-website_django_1 python manage.py migrate`
-8. Run `docker-compose restart django`
-9. Edit the nginx config file to suite the project.
-10. Enjoy the website!
+8. Run `docker exec -ti geeks-website_django_1 python manage.py collectstatic`
+8. Run `docker exec -ti geeks-website_django_1 python manage.py createsuperuser` to create the admin.
+9. Run `docker-compose restart django`
+10. Edit the nginx config file to suite the project.
+11. Enjoy the website!
 
 ---
 
