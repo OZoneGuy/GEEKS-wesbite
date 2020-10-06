@@ -23,7 +23,8 @@ img#weekly {
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 60vw;
+  max-height: 60vh;
+  max-width: 900px;
   position: relative;
   margin: auto;
 }
@@ -34,7 +35,14 @@ img#weekly {
 }
 
 .mySlides img {
-    width: 100%;
+    min-height: 40vh;
+    min-width: 30vw;
+    max-height: 100%;
+
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Next & previous buttons */
@@ -51,6 +59,7 @@ img#weekly {
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+  background-color: #717171;
 }
 
 /* Position the "next button" to the right */
