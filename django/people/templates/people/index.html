@@ -33,6 +33,8 @@ Membership costs 10CAD. You will be contacted with instructions.
 
 {% if perms.people.make_member %}
 <a href="{% url 'people:membership' %}">See membership applications</a>
+{% endif %}
+{% if perms.people.see_member %}
 <br>
 <a href="{% url 'people:members' %}">See members</a>
 {% endif %}
