@@ -115,6 +115,7 @@ def memberships(request):
         return render(request, 'people/memberships.html', context=context)
 
 
+@permission_required('people.see_members', raise_exception=True)
 def members(request):
     if (request.POST):
         f_name = request.POST['f_name']

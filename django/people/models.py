@@ -47,6 +47,7 @@ class Account(models.Model):
     class Meta:
         permissions = (
             ('make_member', 'Can give membership status'),
+            ('see_members', "Can see a list of members"),
         )
 
     def __str__(self):
