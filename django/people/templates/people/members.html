@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Members{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/people/members.css' %}" >
+{% endblock %}
+
+{% block body %}
+<form method="post", action="{% url 'people:members' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>
+                <label for="f_name">First Name:</label>
+            </td>
+            <td>
+                <input name="f_name" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="l_name">Last Name:</label>
+            </td>
+            <td>
+                <input name="l_name" type="text">
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit"/>
+</form>
+<br>
+<table class="members">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </tr>
+    {% for member in members %}
+    <tr>
+        <td>{{ member.user.first_name }}</td>
+        <td>{{ member.user.last_name }}</td>
+        <td>{{ member.user.email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

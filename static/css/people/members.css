@@ -1,0 +1,8 @@
+table.members {
+    min-width: 50vw;
+    margin: 2em;
+}
+
+.members th, .members td {
+    padding: 10px 2em;
+}

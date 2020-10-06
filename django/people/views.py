@@ -113,3 +113,18 @@ def memberships(request):
         context = {'members':
                    Account.objects.filter(pending_member__exact=True)}
         return render(request, 'people/memberships.html', context=context)
+
+
+def members(request):
+    if (request.POST):
+        f_name = request.POST['f_name']
+        l_name = request.POST['l_name']
+        context = {"members": Account.objects.filter(
+            user__first_name__icontains=f_name,
+            user__last_name__icontains=l_name,
+            is_member=True)}
+        pass
+    else:
+        context = {"members": Account.objects.filter(is_member=True)}
+        pass
+    return render(request, 'people/members.html', context=context)
