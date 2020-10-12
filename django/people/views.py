@@ -1,15 +1,20 @@
 import uuid
 from datetime import date
+from io import BytesIO
+from tempfile import NamedTemporaryFile, TemporaryFile
 
+import qrcode
 from django.contrib import messages
-from django.contrib.auth import authenticate, update_session_auth_hash
+from django.contrib.auth import authenticate
 from django.contrib.auth import login as l_in
 from django.contrib.auth import logout as l_out
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User as U
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from fpdf import FPDF
 
 from .models import Account, LoginForm, RegisterForm
 
@@ -155,3 +160,56 @@ def change_pass(request):
         'submit': "Change Password",
         'title': "Change Password"
     })
+
+
+def card(request):
+    account = request.user.account
+    pdf = FPDF('L', 'mm', (51, 89))
+
+    pdf.add_page()
+    pdf.image('/usr/static/img/people/front.png', x=0, y=0, w=89, h=51,
+              type='PNG')
+
+    # backside
+    pdf.add_page()
+    pdf.image('/usr/static/img/people/back.png', x=0, y=0, w=89, h=51,
+              type='PNG')
+
+    # first name
+    pdf.set_font('arial', size=14.2)
+    pdf.text(x=14, y=20.5, txt=account.user.first_name)
+
+    # last name
+    pdf.set_font('arial', size=14.2)
+    pdf.text(x=14, y=29, txt=account.user.last_name)
+
+    # code
+    pdf.set_font('arial', size=6)
+    pdf.text(x=14, y=42.5, txt=account.member_code.urn[9:])
+
+    img = qrcode.make(account.member_code)
+    imgBytes = BytesIO()
+    img.save(imgBytes)
+    with NamedTemporaryFile() as qr:
+
+        qr.write(imgBytes.getvalue())
+        # qr code
+        qr.seek(0)
+        pdf.image(qr.name, x=60, y=18, w=27, type='PNG')
+
+        b = bytes(pdf.output(dest='S'), 'latin')
+        with TemporaryFile() as card:
+            card.write(b)
+            card.seek(0)
+            return HttpResponse(card, content_type='application/pdf')
+
+
+def QRcode(request):
+    img = qrcode.make(request.user.account.member_code)
+    imgBytes = BytesIO()
+    img.save(imgBytes)
+    with TemporaryFile() as qr:
+
+        qr.write(imgBytes.getvalue())
+        qr.seek(0)
+        return HttpResponse(qr, content_type='image/png')

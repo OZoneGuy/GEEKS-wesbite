@@ -12,4 +12,6 @@ urlpatterns = [
     path('password', views.change_pass, name='password'),
     path('membership', views.memberships, name='membership'),
     path('members', views.members, name='members'),
+    path('card', views.card, name='card'),
+    path('qrcode', views.QRcode, name='qrcode'),
 ]
