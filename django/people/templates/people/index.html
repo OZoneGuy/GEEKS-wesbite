@@ -24,13 +24,15 @@ Account groups: {% for group in user.groups.all %} {{ group.name }} {% endfor %}
 <br>
 {% if member.is_member %}
 Membership Number: {{ member.member_code }}
-<div id="memQR"></div>
+<br>
+<a href="{% url 'people:card' %}">Membership Card</a>
+<br>
+<img style="width:100; height:100" src="{% url 'people:qrcode' %}" alt="qrcode">
 {% else %}
 <button>Request Membership(WIP)</button>
-<br>
 Membership costs 10CAD. You will be contacted with instructions.
 {% endif %}
-
+<br>
 {% if perms.people.make_member %}
 <a href="{% url 'people:membership' %}">See membership applications</a>
 {% endif %}
@@ -43,11 +45,11 @@ Membership costs 10CAD. You will be contacted with instructions.
 <br>
 <a href="{% url 'people:logout' %}">Logout</a>
 
-<script type="text/javascript">
- var qrcode = new QRCode(document.getElementById("memQR"), {
+<!-- <script type="text/javascript">
+     var qrcode = new QRCode(document.getElementById("memQR"), {
      text: "{{ member.member_code }}",
      width: 100,
      height: 100
- })
-</script>
+     })
+     </script> -->
 {% endblock %}
