@@ -163,6 +163,8 @@ def change_pass(request):
 
 
 def card(request):
+    if (not request.user.is_authenticated):
+        return redirect('people:login')
     account = request.user.account
     pdf = FPDF('L', 'mm', (51, 89))
 
@@ -185,9 +187,15 @@ def card(request):
 
     # code
     pdf.set_font('arial', size=6)
-    pdf.text(x=14, y=42.5, txt=account.member_code.urn[9:])
+    if (account.is_member):
+        pdf.text(x=14, y=42.5, txt=account.member_code.urn[9:])
+    else:
+        pdf.text(x=14, y=42.5, txt='c61cb43a-00ed-4f8b-bb2c-4cb4438822ec')
 
-    img = qrcode.make(account.member_code)
+    if (request.user.account.is_member):
+        img = qrcode.make(account.member_code)
+    else:
+        img = qrcode.make('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
     imgBytes = BytesIO()
     img.save(imgBytes)
     with NamedTemporaryFile() as qr:
@@ -205,7 +213,12 @@ def card(request):
 
 
 def QRcode(request):
-    img = qrcode.make(request.user.account.member_code)
+    if (not request.user.is_authenticated):
+        return redirect('people:login')
+    if (request.user.account.is_member):
+        img = qrcode.make(request.user.account.member_code)
+    else:
+        img = qrcode.make('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
     imgBytes = BytesIO()
     img.save(imgBytes)
     with TemporaryFile() as qr:
