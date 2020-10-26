@@ -10,8 +10,8 @@ from events.models import Event
 def index(request):
     context = {
         'events': Event.objects.filter(start_time__gt=datetime.now()
-                                       ).order_by('start_time')[:5],
-        'blogs': Blog.objects.all().order_by('last_edit_date')[:5],
+                                       ).order_by('-start_time')[:5],
+        'blogs': Blog.objects.all().order_by('-last_edit_date')[:5],
     }
 
     return render(request, "home/index.html", context=context)
