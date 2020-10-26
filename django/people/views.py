@@ -127,11 +127,12 @@ def members(request):
     if (request.POST):
         f_name = request.POST['f_name']
         l_name = request.POST['l_name']
-        is_member = request.POST['is_member']
-        context = {"members": Account.objects.filter(
+        members = Account.objects.filter(
             user__first_name__icontains=f_name,
-            user__last_name__icontains=l_name,
-            is_member=is_member == "yes")}
+            user__last_name__icontains=l_name)
+        if 'is_member' in request.POST:
+            members = members.filter(is_member=True)
+        context = {"members": members}
         pass
     else:
         context = {"members": Account.objects.all()}
