@@ -132,11 +132,12 @@ def members(request):
             user__last_name__icontains=l_name)
         if 'is_member' in request.POST:
             members = members.filter(is_member=True)
-        context = {"members": members}
-        pass
+        context = {"members": members.order_by('user__first_name',
+                                               'user__last_name')}
     else:
-        context = {"members": Account.objects.all()}
-        pass
+        context = {"members": Account.objects.all().order_by(
+            'user__first_name',
+            'user__last_name')}
     return render(request, 'people/members.html', context=context)
 
 
