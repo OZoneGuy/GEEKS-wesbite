@@ -21,9 +21,10 @@
     </head>
     <body>
         <div class="topnav" id="myTopnav">
-            <a href="#home">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
+            <a href="{% url 'home:index' %}">Home</a>
+            <a href="{% url 'events:index' %}">Events</a>
+            <a href="{% url 'home:weeklies' %}">Weekly Events</a>
+            <a href="{% url 'blogs:index' %}">News</a>
             <div class="dropdown">
                 <button class="dropbtn">Dropdown
                     <i class="fa fa-caret-down"></i>
@@ -34,8 +35,13 @@
                     <a href="#">Link 3</a>
                 </div>
             </div>
-            <a href="#about">About</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+            <a href="{% url 'home:about_us' %}">About</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'people:account' %}">Account</a>
+            {% else %}
+            <a href="{% url 'people:login' %}">Login</a>
+            <a href="{% url 'people:register' %}">Register</a>
+            {% endif %}<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
         {% block body %}
         {% endblock %}
