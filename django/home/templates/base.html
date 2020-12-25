@@ -13,41 +13,43 @@
         {% block head %}{% endblock %}
     </head>
     <body>
-        <div class="topnav" id="myTopnav">
-            <a href="{% url 'home:index' %}">Home</a>
-            <a href="{% url 'events:index' %}">Events</a>
-            <a href="{% url 'home:weeklies' %}">Weekly Events</a>
-            <a href="{% url 'blogs:index' %}">News</a>
-            <div class="dropdown">
-                <button class="dropbtn">Dropdown
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+        <div id="body">
+            <div class="topnav" id="myTopnav">
+                <a href="{% url 'home:index' %}">Home</a>
+                <a href="{% url 'events:index' %}">Events</a>
+                <a href="{% url 'home:weeklies' %}">Weekly Events</a>
+                <a href="{% url 'blogs:index' %}">News</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Dropdown
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
                 </div>
+                <a href="{% url 'home:about_us' %}">About</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'people:account' %}">Account</a>
+                {% else %}
+                <a href="{% url 'people:login' %}">Login</a>
+                <a href="{% url 'people:register' %}">Register</a>
+                {% endif %}<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
-            <a href="{% url 'home:about_us' %}">About</a>
-            {% if user.is_authenticated %}
-            <a href="{% url 'people:account' %}">Account</a>
-            {% else %}
-            <a href="{% url 'people:login' %}">Login</a>
-            <a href="{% url 'people:register' %}">Register</a>
-            {% endif %}<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-        </div>
-        {% block body %}
-        {% endblock %}
-        <script>
-         function myFunction() {
-             var x = document.getElementById("myTopnav");
-             if (x.className === "topnav") {
-                 x.className += " responsive";
-             } else {
-                 x.className = "topnav";
+            {% block body %}
+            {% endblock %}
+            <script>
+             function myFunction() {
+                 var x = document.getElementById("myTopnav");
+                 if (x.className === "topnav") {
+                     x.className += " responsive";
+                 } else {
+                     x.className = "topnav";
+                 }
              }
-         }
-        </script>
+            </script>
+        </div>
     </body>
 
 </html>
