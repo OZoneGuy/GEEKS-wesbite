@@ -14,6 +14,17 @@
     </head>
     <body>
         <div id="body">
+            <style>
+             #header-img {
+                 width: 100%;
+                 height: 30vh;
+                 background: url({% block head_img %}{% static 'img/header_default_geeks.jpg' %}{% endblock %}) 50% 50% no-repeat;
+                 background-size: 100%;
+                 overflow: hidden;
+             }
+            </style>
+            <div id="header-img">
+            </div>
             <div class="topnav" id="myTopnav">
                 <a href="{% url 'home:index' %}">Home</a>
                 <a href="{% url 'events:index' %}">Events</a>
