@@ -6,9 +6,7 @@ body {
     margin: 0;
 
     color: black !important;
-}
 
-p {
     font-family: Roboto;
 }
 
@@ -20,6 +18,21 @@ h1, h2, h3, h4, h5 {
 #img-logo {
     /* margin: 0.4em 0.5em; */
     height: 5vh;
+}
+
+a:link.button, a:visited.button {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    margin: 0.25em 0.5em;
+}
+
+a:hover.button, a:active.button {
+    background-color: red;
 }
 
 /* Add a black background color to the top navigation */
@@ -138,4 +151,3 @@ h1, h2, h3, h4, h5 {
     width: 100%;
     text-align: left;
   }
-}

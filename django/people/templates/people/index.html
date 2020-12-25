@@ -4,52 +4,54 @@
 {% block title %}{{ member.user.first_name }}'sProfile{% endblock %}
 
 {% block head %}
-<script src="https://cdn.jsdelivr.net/npm/davidshimjs-qrcodejs@0.0.2/qrcode.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/people/index.css' %}">
 {% endblock %}
 
 {% block body %}
+<div class="main-section">
 
-<h3>{{ member.user.first_name }} {{ member.user.last_name }}</h3>
+    {% if user.is_staff %}
+    <a class="button" href="/admin/">Admin page</a>
+    {% endif %}
+    <br>
 
-<p>Email: {{ member.user.email }}</p>
+    {% if not member.is_member %}
 
+    <a class="button" href="#">Request Membership, 10CAD(WIP)</a>
+    <br>
+    {% endif %}
 
+    <br>
+    {% if perms.people.make_member %}
+    <a class="button" href="{% url 'people:membership' %}">See membership applications</a>
+    {% endif %}
+    {% if perms.people.see_member %}
+    <br>
+    <a class="button" href="{% url 'people:members' %}">See members</a>
+    {% endif %}
+    <br>
+    <a class="button" href="{% url 'people:password' %}">Change Passowrd</a>
+    <br>
+    <a class="button" href="{% url 'people:logout' %}">Logout</a>
+</div>
+<div class="main-section">
+    <h3>{{ member.user.first_name }} {{ member.user.last_name }}</h3>
 
-{% if user.is_staff %}
-Account groups: {% for group in user.groups.all %} {{ group.name }} {% endfor %}
-<br>
-<a href="/admin/">Admin page</a>
-{% endif %}
+    <p>Email: {{ member.user.email }}</p>
 
-<br>
-{% if member.is_member %}
-Membership Number: {{ member.member_code }}
-<br>
-<a href="{% url 'people:card' %}">Membership Card</a>
-<br>
-<img style="width:100; height:100" src="{% url 'people:qrcode' %}" alt="qrcode">
-{% else %}
-<button>Request Membership(WIP)</button>
-Membership costs 10CAD. You will be contacted with instructions.
-{% endif %}
-<br>
-{% if perms.people.make_member %}
-<a href="{% url 'people:membership' %}">See membership applications</a>
-{% endif %}
-{% if perms.people.see_member %}
-<br>
-<a href="{% url 'people:members' %}">See members</a>
-{% endif %}
-<br>
-<a href="{% url 'people:password' %}">Change Passowrd</a>
-<br>
-<a href="{% url 'people:logout' %}">Logout</a>
+    {% if user.is_staff %}
+    <p>
+        Account groups: {% for group in user.groups.all %} {{ group.name }} {% endfor %}
+    </p>
+    <br>
+    {% endif %}
 
-<!-- <script type="text/javascript">
-     var qrcode = new QRCode(document.getElementById("memQR"), {
-     text: "{{ member.member_code }}",
-     width: 100,
-     height: 100
-     })
-     </script> -->
+    <br>
+    {% if member.is_member %}
+    Membership Number: {{ member.member_code }}
+    <br>
+    <img style="width:100; height:100" src="{% url 'people:qrcode' %}" alt="qrcode">
+    {% endif %}
+
+</div>
 {% endblock %}
