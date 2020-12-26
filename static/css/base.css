@@ -46,6 +46,9 @@ a:hover.button, a:active.button {
 .topnav {
   background-color: black;
   overflow: hidden;
+
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 /* Style the links inside the navigation bar */
