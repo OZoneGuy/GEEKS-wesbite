@@ -22,11 +22,6 @@ h1, h2, h3, h4, h5 {
     color: black;
 }
 
-#img-logo {
-    /* margin: 0.4em 0.5em; */
-    height: 5vh;
-}
-
 a:link.button, a:visited.button {
     background-color: #f44336;
     color: white;
@@ -40,36 +35,6 @@ a:link.button, a:visited.button {
 
 a:hover.button, a:active.button {
     background-color: red;
-}
-
-/*********************************  Blog css  *********************************/
-div.blogs hr {
-    width: 80%;
-    margin: auto;
-}
-
-div.blog {
-    width: 80%;
-    padding: 1em;
-
-    border-radius: 5px;
-
-    position: relative;
-
-    transition: box-shadow 0.1s, background-size 0.2s;
-}
-
-a.blog {
-    height: 100%;
-    width: 100%;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-a.blog:hover {
-    text-decoration: none;
 }
 
 /*******************************  Nav bar CSS *********************************/
