@@ -42,6 +42,38 @@ a:hover.button, a:active.button {
     background-color: red;
 }
 
+/*********************************  Blog css  *********************************/
+div.blogs hr {
+    width: 80%;
+    margin: auto;
+}
+
+div.blog {
+    width: 80%;
+    padding: 1em;
+
+    border-radius: 5px;
+
+    position: relative;
+
+    transition: box-shadow 0.1s, background-size 0.2s;
+}
+
+a.blog {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+a.blog:hover {
+    text-decoration: none;
+}
+
+/*******************************  Nav bar CSS *********************************/
+
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: black;
