@@ -10,18 +10,17 @@
 {% block body %}
 
 {% if perms.events.add_event %}
-<a href="{% url 'events:new' %}">Add Event</a>
+<a class="button" href="{% url 'events:new' %}">Add Event</a>
 {% endif %}
 
 {% for event in events %}
 
-<a href="{% url 'events:details' event.id %}" class="event-item">
-    <div>
-        <h3>{{ event.title }}</h3>
-        <h5>{{ event.short_desc }}</h5>
+<div class="event-item" style="background-image: url( {{ event.banner.url }} );">
+        <h2>{{ event.title }}</h3>
+        <h4>{{ event.short_desc }}</h5>
         <p>{{ events.start_time|date:"SHORT_DATETIME_FORMAT" }}</p>
+        <a href="{% url 'events:details' event.id %}" class="event-item"></a>
     </div>
-</a>
 
 {% empty %}
 

@@ -1,18 +1,38 @@
-.event-item > div {
-    width: 80vw;
+div.event-item {
+    width: 80%;
     margin: 1em auto;
     padding: 1em;
 
-    transition: background-color 0.2s, box-shadow 0.1s;
+    border-radius: 5px;
 
-    color: black !important;
-}
-
-.event-item > div:hover {
     box-shadow: 0px 0px 4px #00000040;
-    transition: background-color 0.2s, box-shadow 0.3s;
+
+    position: relative;
+
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 75%;
+
+    transition: box-shadow 0.1s, background-size 0.2s;
 }
 
-a:hover.event-item {
+div.event-item:hover {
+    box-shadow: 0px 0px 4px #000000f0;
+    background-size: 100%;
+
+    transition: box-shadow 0.3s, background-size 0.3s;
+
+}
+
+a.event-item {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+a.event-item:hover {
     text-decoration: none;
 }

@@ -10,23 +10,22 @@
 {% block body %}
 
 {% if perms.blogs.add_blog %}
-<a href="{% url 'blogs:new' %}">Add Blog</a>
+<a class="button" href="{% url 'blogs:new' %}">Add Blog</a>
 {% endif %}
 
 {% for blog in blogs %}
 
-<a href="{% url 'blogs:details' blog.id %}" class="blog">
-    <div>
-        <h3>{{ blog.title }}</h3>
-        <h5>{{ blog.body | truncatechars:100 }}</h5>
-        <p>By: {{ blog.author }}</p>
-        <p>Pub Date: {{ blog.pub_date|date:"SHORT_DATE_FORMAT" }}</p>
-    </div>
-</a>
+<div class="blog">
+    <h3>{{ blog.title }}</h3>
+    <h5>{{ blog.body | truncatechars:100 }}</h5>
+    <p>By: {{ blog.author }}</p>
+    <p>Pub Date: {{ blog.pub_date|date:"SHORT_DATE_FORMAT" }}</p>
+    <a href="{% url 'blogs:details' blog.id %}" class="blog"></a>
+</div>
 
 {% empty %}
 
-<h3>No blogs so far.</h3>
+<h3>No blogs so far</h3>
 
 {% endfor %}
 

@@ -1,18 +1,38 @@
-.blog > div {
-    width: 80vw;
+div.blog {
+    width: 80%;
     margin: 1em auto;
     padding: 1em;
 
-    transition: background-color 0.2s, box-shadow 0.1s;
+    border-radius: 5px;
 
-    color: black !important;
-}
-
-.blog > div:hover {
     box-shadow: 0px 0px 4px #00000040;
-    transition: background-color 0.2s, box-shadow 0.3s;
+
+    position: relative;
+
+    /* background-position: 50% 50%; */
+    /* background-repeat: no-repeat; */
+    /* background-size: 75%; */
+
+    transition: box-shadow 0.1s, background-size 0.2s;
 }
 
-a:hover.blog {
+div.blog:hover {
+    box-shadow: 0px 0px 4px #000000f0;
+    /* background-size: 100%; */
+
+    transition: box-shadow 0.3s, background-size 0.3s;
+
+}
+
+a.blog {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+a.blog:hover {
     text-decoration: none;
 }
