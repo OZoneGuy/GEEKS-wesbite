@@ -16,7 +16,9 @@
 
     <div class="mySlides fade">
         <div class="numbertext">{{ forloop.countr }}/{{ events|length }}</div>
-        <img src="{{ event.banner.url }}">
+        <a href="{% url 'events:details' event.id %}">
+            <img src="{{ event.banner.url }}">
+        </a>
         <div class="text"><h2>{{ event.title }}</h2></div>
     </div>
 
