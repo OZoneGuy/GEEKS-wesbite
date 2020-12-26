@@ -1,3 +1,14 @@
-div.blog {
-    padding: 1em 20vw
+h2 {
+    width: 100%;
+    text-align: center;
+}
+
+div.blog-body {
+    max-width: 60%;
+    margin: 2em 1em 0 5%;
+}
+
+div.blog-body p {
+    font-size: 20px;
+    line-height: 2em;
 }

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
 {% load custom_tags %}
+{% load static %}
 
 {% block title %}{{ blog.title }}{% endblock %}
 
@@ -10,14 +10,22 @@
 
 {% block body %}
 
+<h2>{{ blog.title }}</h2>
 {% if perms.blogs.change_blog %}
-<a href="{% url 'blogs:edit' blog.id %}">Edit Blog</a>
+<a class="button" href="{% url 'blogs:edit' blog.id %}">Edit Blog</a>
 {% endif %}
 
-<div class="blog">
-    <p>{{ blog.author }}</p>
-    <p>{{ blog.pub_date }}</p>
-    {{ blog.body|markdown|safe }}
+<p> <b>Author: </b> {{ blog.author }}</p>
+
+<p> <b>Published: </b> {{ blog.pub_date|date:"SHORT_DATETIME_FORMAT" }}</p>
+
+{% if blog.is_edited %}
+<p> <em>Last edited:</em> {{ blog.last_edit_date|date:"SHORT_DATETIME_FORMAT" }}</p>
+
+{% endif %}
+
+<div class="blog-body">
+    {{ blog.body|markdown|safe|escape }}
 </div>
 
 {% endblock %}
