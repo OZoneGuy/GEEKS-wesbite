@@ -1,20 +1,33 @@
 {% extends 'base.html' %}
 {% load custom_tags %}
+{% load static %}
 
 {% block title %}{{ event.title }}{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/events/details.css' %}" type="text/css" media="screen" />
+{% endblock %}
+
+{% block head_img %}
+{{ event.banner.url }}
+{% endblock %}
+
 {% block body %}
-
-<img src="{{ event.banner.url }}" alt="event_banner">
-
-<br>
 
 <h2>{{ event.title }}</h2>
 {% if perms.events.change_event %}
-<a href="{% url 'events:edit' event.id %}">Edit Event</a>
+<a class="button" href="{% url 'events:edit' event.id %}">Edit Event</a>
 {% endif %}
 
-<p>{{ event.start_time|date:"SHORT_DATETIME_FORMAT" }}</p>
-<p>{{ event.long_desc|markdown|safe }}</p>
+<p> <em>Starting:</em> {{ event.start_time|date:"SHORT_DATETIME_FORMAT" }}</p>
+
+{% if event.end_time %}
+<p> <em>Ending:</em> {{ event.end_time|date:"SHORT_DATETIME_FORMAT" }}</p>
+
+{% endif %}
+
+<div class="event-body">
+    {{ event.long_desc|markdown|safe|escape }}
+</div>
 
 {% endblock %}

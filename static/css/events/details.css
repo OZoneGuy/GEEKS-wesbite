@@ -1,0 +1,14 @@
+h2 {
+    width: 100%;
+    text-align: center;
+}
+
+div.event-body {
+    max-width: 60%;
+    margin: 2em 1em 0 5%;
+}
+
+div.event-body p {
+    font-size: 20px;
+    line-height: 2em;
+}
