@@ -10,27 +10,29 @@
 {% block body %}
 <div class="main-section">
 
-    {% if user.is_staff %}
-    <a class="button" href="/admin/">Admin page</a>
-    {% endif %}
-    <br>
-
     {% if not member.is_member %}
-
     <a class="button" href="#">Request Membership, 10CAD(WIP)</a>
     <br>
     {% endif %}
 
+    {% if user.is_staff %}
+    <a class="button" href="/admin/">Admin page</a>
     <br>
+    {% endif %}
+
     {% if perms.people.make_member %}
     <a class="button" href="{% url 'people:membership' %}">See membership applications</a>
-    {% endif %}
-    {% if perms.people.see_member %}
     <br>
-    <a class="button" href="{% url 'people:members' %}">See members</a>
     {% endif %}
+
+    {% if perms.people.see_member %}
+    <a class="button" href="{% url 'people:members' %}">See members</a>
+    <br>
+    {% endif %}
+
     <br>
     <a class="button" href="{% url 'people:password' %}">Change Passowrd</a>
+
     <br>
     <a class="button" href="{% url 'people:logout' %}">Logout</a>
 </div>
