@@ -11,6 +11,8 @@ class Blog(models.Model):
     last_edit_date = models.DateTimeField(auto_now=True)
     author = models.CharField(max_length=50)
 
+    def is_edited(self):
+        return (self.last_edit_date - self.pub_date).seconds > 0
 
 class NewBlogForm(forms.Form):
     title = forms.CharField(max_length=100,
