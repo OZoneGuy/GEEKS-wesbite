@@ -1,22 +1,40 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/home/about_us.css' %}">
+{% endblock %}
 
 {% block title %}About Us{% endblock %}
 
 {% block body %}
-McMaster Geeks is the largest general recreation and gaming community at McMaster. We run events and services for all interests that include but are not limited to gaming, tabletop games, anime, and beyond. These events can be weekly - such as our anime nights, trading card game nights, Smash weeklies, Dungeons & Dragons Oneshots, and Minecraft nights. We also will host larger events such as tournaments or social outings where members of our community can meet new friends for the hobbies that they enjoy the most.
+<div style="max-width: 90%; margin: auto;">
+    <p>
+        McMaster Geeks is the largest general recreation and gaming community at McMaster. We run events and services for all interests that include but are not limited to <em><b>Gaming</b></em>, <em><b>Tabletop Games</b></em>, <em><b>Anime</b></em>, and beyond. These events can be weekly - such as our <em>Anime Nights</em>, <em>Trading Card Game Nights</em>, <em>Smash Weeklies</em>, <em>Dungeons & Dragons Oneshots</em>, and <em>Minecraft Nights</em>. We also will host larger events such as tournaments or social outings where members of our community can meet new friends for the hobbies that they enjoy the most. </p>
+    <p>
+        We also offer a Geeks membership card, which provides discounts and perks at our events along with our partners: <b>Board Game Central</b>, <b>Torchlight Games & Hobbies</b>, and <b>Black Knight Games</b>! No matter how you spend your free time, our club is dedicated to giving any and all McMaster students a welcoming space to enjoy the things they love.
+    </p>
+    <p>
+        As we head into an online school semester, we are committed to nurturing our virtual space where students can participate in club events and build a community that spans out beyond Hamilton.
+    </p>
+    <p>
+        Our Discord is where our online events are hosted, open for everyone to join, and a place to share anything geeky! Our Facebook and Instagram include important event information and announcements so you know when, where, and how exactly our events will be happening! Keep updated on our socials here:
+    </p>
 
-We also offer a Geeks membership card, which provides discounts and perks at our events along with our partners: Board Game Central, Torchlight Games & Hobbies, and Black Knight Games! No matter how you spend your free time, our club is dedicated to giving any and all McMaster students a welcoming space to enjoy the things they love.
+    <ul id="social">
+        <li>
+            <a href="https://discord.com/invite/zyytMtM"><img src="{% static 'img/logos/discord.svg' %}" alt="discord-logo"></a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/mcmastergeeks/"><img src="{% static 'img/logos/instagram.svg' %}" alt="instagram-logo"></a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/groups/McMasterGEEKS"><img src="{% static 'img/logos/facebook.svg' %}" alt="facebook-logo"></a>
+        </li>
+    </ul>
 
-As we head into an online school semester, we are committed to nurturing our virtual space where students can participate in club events and build a community that spans out beyond Hamilton.
-
-Our Discord is where our online events are hosted, open for everyone to join, and a place to share anything geeky! Our Facebook and Instagram include important event information and announcements so you know when, where, and how exactly our events will be happening! Keep updated on our socials here: 
-
-<ul>
-    <li><a href="https://discord.com/invite/zyytMtM">Discord</a> </li>
-    <li><a href="https://www.instagram.com/mcmastergeeks/">Instagram</a> </li>
-    <li><a href="https://www.facebook.com/McMasterGeeks">Facebook page(events)</a> </li>
-    <li><a href="https://www.facebook.com/groups/McMasterGEEKS">Facebook Group</a> </li>
-</ul>
-
-Stay tuned to our socials for news on our upcoming website!
+    <p>
+        Also check out our <a href="https://www.facebook.com/McMasterGeeks">Facebook Events Page</a>.
+    </p>
+</div>
 {% endblock %}

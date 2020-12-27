@@ -1,0 +1,24 @@
+/* ul#social { */
+/*     width: 400px; */
+/*     margin: auto; */
+/* } */
+
+ul#social li{
+    display: inline;
+    width: 60px;
+    height: 60px;
+}
+
+ul#social img {
+    width: 50px;
+}
+
+li {
+    list-style: none;
+    margin: 1em;
+}
+
+p {
+    font-size: 1.4em;
+    line-height: 1.4em;
+}
