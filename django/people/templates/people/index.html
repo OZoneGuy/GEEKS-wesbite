@@ -37,21 +37,20 @@
     <a class="button" href="{% url 'people:logout' %}">Logout</a>
 </div>
 <div class="main-section">
-    <h3>{{ member.user.first_name }} {{ member.user.last_name }}</h3>
+    <h2>{{ member.user.first_name }} {{ member.user.last_name }}</h2>
 
-    <p>Email: {{ member.user.email }}</p>
+    <h3><b>Email:</b> {{ member.user.email }}</h3>
 
     {% if user.is_staff %}
-    <p>
-        Account groups: {% for group in user.groups.all %} {{ group.name }} {% endfor %}
-    </p>
-    <br>
+    <h3>
+        <b>Account Groups:</b> {% for group in user.groups.all %} <p style="margin-left: 2em">{{ group.name }}</p> {% endfor %}
+    </h3>
     {% endif %}
 
-    <br>
     {% if member.is_member %}
-    Membership Number: {{ member.member_code }}
-    <br>
+    <h3>
+        <b>Membership Code:</b>
+    </h3>
     <img style="width:100; height:100" src="{% url 'people:qrcode' %}" alt="qrcode">
     {% endif %}
 
