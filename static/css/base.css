@@ -46,6 +46,7 @@ a:link.button, a:visited.button {
 
 a:hover.button, a:active.button {
     background-color: red;
+    font-weight: 400;
 }
 
 /*******************************  Nav bar CSS *********************************/
@@ -122,6 +123,8 @@ a:hover.button, a:active.button {
 
 /* Add a dark background on topnav links and the dropdown button on hover */
 .topnav a:hover, .dropdown:hover .dropbtn {
+    font-weight: 400;
+
   background-color: #555;
   color: white;
 }
