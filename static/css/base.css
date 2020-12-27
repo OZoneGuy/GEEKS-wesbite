@@ -22,6 +22,14 @@ h1, h2, h3, h4, h5 {
     color: black;
 }
 
+a, a:hover {
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: 500;
+}
+
 a:link.button, a:visited.button {
     background-color: #f44336;
     color: white;
