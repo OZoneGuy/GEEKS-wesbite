@@ -31,16 +31,16 @@
                 <a href="{% url 'events:index' %}">Events</a>
                 <a href="{% url 'home:weeklies' %}">Weekly Events</a>
                 <a href="{% url 'blogs:index' %}">News</a>
-                <div class="dropdown">
-                    <button class="dropbtn">Dropdown
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
+                <!-- <div class="dropdown">
+                     <button class="dropbtn">Dropdown
+                     <i class="fa fa-caret-down"></i>
+                     </button>
+                     <div class="dropdown-content">
+                     <a href="#">Link 1</a>
+                     <a href="#">Link 2</a>
+                     <a href="#">Link 3</a>
+                     </div>
+                     </div> -->
                 <a href="{% url 'home:about_us' %}">About</a>
                 {% if user.is_authenticated %}
                 <a href="{% url 'people:account' %}">Account</a>
