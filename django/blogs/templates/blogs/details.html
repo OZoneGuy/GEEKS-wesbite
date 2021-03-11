@@ -15,12 +15,12 @@
 <a class="button" href="{% url 'blogs:edit' blog.id %}">Edit Blog</a>
 {% endif %}
 
-<p> <b>Author: </b> {{ blog.author }}</p>
+<p class="author"> <b>Author: </b> {{ blog.author }}</p>
 
-<p> <b>Published: </b> {{ blog.pub_date|date:"SHORT_DATETIME_FORMAT" }}</p>
+<p class="dates"> <b>Published: </b> {{ blog.pub_date|date:"SHORT_DATETIME_FORMAT" }}</p>
 
 {% if blog.is_edited %}
-<p> <em>Last edited:</em> {{ blog.last_edit_date|date:"SHORT_DATETIME_FORMAT" }}</p>
+<p class="dates"> <em>Last edited:</em> {{ blog.last_edit_date|date:"SHORT_DATETIME_FORMAT" }}</p>
 
 {% endif %}
 

@@ -5,3 +5,23 @@ div.main-section {
 
     margin: 1em 5%;
 }
+
+div.container {
+    display: flex;
+    flex-direction: row;
+}
+div.item {
+
+}
+
+@media screen and (max-width: 600px) {
+
+    div.main-section {
+        float: initial;
+        width: initial;
+    }
+
+    div.container {
+        flex-direction: column-reverse;
+    }
+}

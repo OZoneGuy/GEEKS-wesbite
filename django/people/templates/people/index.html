@@ -8,51 +8,53 @@
 {% endblock %}
 
 {% block body %}
-<div class="main-section">
+<div class="container">
+    <div class="main-section">
 
-    {% if not member.is_member %}
-    <a class="button" href="#">Request Membership, 10CAD(WIP)</a>
-    <br>
-    {% endif %}
+        {% if not member.is_member %}
+        <a class="button" href="#">Request Membership, 10CAD(WIP)</a>
+        <br>
+        {% endif %}
 
-    {% if user.is_staff %}
-    <a class="button" href="/admin/">Admin page</a>
-    <br>
-    {% endif %}
+        {% if user.is_staff %}
+        <a class="button" href="/admin/">Admin page</a>
+        <br>
+        {% endif %}
 
-    {% if perms.people.make_member %}
-    <a class="button" href="{% url 'people:membership' %}">See membership applications</a>
-    <br>
-    {% endif %}
+        {% if perms.people.make_member %}
+        <a class="button" href="{% url 'people:membership' %}">See membership applications</a>
+        <br>
+        {% endif %}
 
-    {% if perms.people.see_member %}
-    <a class="button" href="{% url 'people:members' %}">See members</a>
-    <br>
-    {% endif %}
+        {% if perms.people.see_member %}
+        <a class="button" href="{% url 'people:members' %}">See members</a>
+        <br>
+        {% endif %}
 
-    <br>
-    <a class="button" href="{% url 'people:password' %}">Change Passowrd</a>
+        <br>
+        <a class="button" href="{% url 'people:password' %}">Change Password</a>
 
-    <br>
-    <a class="button" href="{% url 'people:logout' %}">Logout</a>
-</div>
-<div class="main-section">
-    <h2>{{ member.user.first_name }} {{ member.user.last_name }}</h2>
+        <br>
+        <a class="button" href="{% url 'people:logout' %}">Logout</a>
+    </div>
+    <div class="main-section">
+        <h2>{{ member.user.first_name }} {{ member.user.last_name }}</h2>
 
-    <h3><b>Email:</b> {{ member.user.email }}</h3>
+        <h3><b>Email:</b> {{ member.user.email }}</h3>
 
-    {% if user.is_staff %}
-    <h3>
-        <b>Account Groups:</b> {% for group in user.groups.all %} <p style="margin-left: 2em">{{ group.name }}</p> {% endfor %}
-    </h3>
-    {% endif %}
+        {% if user.is_staff %}
+        <h3>
+            <b>Account Groups:</b> {% for group in user.groups.all %} <p style="margin-left: 2em">{{ group.name }}</p> {% endfor %}
+        </h3>
+        {% endif %}
 
-    {% if member.is_member %}
-    <h3>
-        <b>Membership Code:</b>
-    </h3>
-    <img style="width:50%" src="{% url 'people:qrcode' %}" alt="qrcode">
-    {% endif %}
+        {% if member.is_member %}
+        <h3>
+            <b>Membership Code:</b>
+        </h3>
+        <img style="width:50%" src="{% url 'people:qrcode' %}" alt="qrcode">
+        {% endif %}
 
+    </div>
 </div>
 {% endblock %}

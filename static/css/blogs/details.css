@@ -12,3 +12,18 @@ div.blog-body p {
     font-size: 20px;
     line-height: 2em;
 }
+
+@media screen and (max-width: 600px) {
+    div.blog-body {
+        max-width: initial;
+        margin: 2em 1em%;
+    }
+
+    p.author {
+        margin-left: 1em;
+    }
+
+    p.dates {
+        margin-left: 1em;
+    }
+}

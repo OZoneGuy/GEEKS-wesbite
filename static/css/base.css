@@ -172,4 +172,16 @@ a:hover.button, a:active.button {
     width: 100%;
     text-align: left;
   }
+
+  .topnav {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+  }
+
+
+  #body {
+      width: 100vw;
+
+      margin: 0;
+  }
 }

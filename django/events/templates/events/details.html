@@ -19,10 +19,10 @@
 <a class="button" href="{% url 'events:edit' event.id %}">Edit Event</a>
 {% endif %}
 
-<p> <em>Starting:</em> {{ event.start_time|date:"SHORT_DATETIME_FORMAT" }}</p>
+<p class="dates"> <em>Starting:</em> {{ event.start_time|date:"SHORT_DATETIME_FORMAT" }}</p>
 
 {% if event.end_time %}
-<p> <em>Ending:</em> {{ event.end_time|date:"SHORT_DATETIME_FORMAT" }}</p>
+<p class="dates"> <em>Ending:</em> {{ event.end_time|date:"SHORT_DATETIME_FORMAT" }}</p>
 
 {% endif %}
 
