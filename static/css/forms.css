@@ -1,0 +1,35 @@
+div.form {
+    margin-top: 1em;
+    margin-left: 2em;
+
+}
+
+table.form {
+    border-spacing: 5px 1em;
+
+    font-size: 1.2em;
+}
+
+.form label {
+}
+
+.form input {
+    font-size: 20px;
+}
+
+.form input[type=submit] {
+    padding: 0.5em 1em;
+    border-radius: 5px;
+
+    background-color: #00D7B7;
+    border-style: none;
+
+    transition: background-color 0.1s;
+}
+
+.form input[type=submit]:hover {
+    background-color: #00ff00;
+
+    cursor: pointer;
+    transition: background-color 0.1s;
+}

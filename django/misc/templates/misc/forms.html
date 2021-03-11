@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
 {% load custom_tags %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}" type="text/css" media="screen"/>
+{% endblock %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-<div class="fieldWrapper" >
+<div class="form" >
     {% if argument %}
     <form action="{% url target argument %}" method="post" enctype="multipart/form-data">
     {% else %}
     <form action="{% url target %}" method="post" enctype="multipart/form-data">
     {% endif %}
         {% csrf_token %}
-        <table style="">
+        <table class="form">
         {% for field in form %}
             <tr>
                 <td>
